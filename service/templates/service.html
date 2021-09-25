@@ -1,0 +1,75 @@
+{% extends "template.html" %}
+{% load static %}
+{% block content %}
+
+    <title>
+        Our Serivices
+    </title>
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/service/header2.jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading">Our Services</div>
+            <div class="masthead-heading text-uppercase">What we can do for you</div>
+        </div>
+    </header>
+    <!-- Services-->
+    <!-- Portfolio Grid-->
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 mb-6">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"></div>
+                            </div>
+                            <img class="img-fluid" src="{% static "img/service/bouquet.jpg" %}" alt="">
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 mb-6">
+                    <!-- Portfolio item 2-->
+                    <div class="portfolio-item text-center">
+                        <h2 style="padding-top: 60px; padding-bottom: 60px">We pack from our design</h2>
+
+                        <h5 style="line-height: 60px">We've prepared some design to suit your need whether that's for a party or is for wedding. Check our <a href="../gallery">Gallery</a> to find out more</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 mb-6">
+                    <!-- Portfolio item 2-->
+                    <div class="portfolio-item text-center">
+                        <h2 style="padding-top: 60px; padding-bottom: 60px">Or you can tell us how you like it</h2>
+
+                        <h5 style="line-height: 60px">You can also <a href="../contact">Contact</a> us so we can come up with
+                            something you like it to be</h5>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 mb-6">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"></div>
+                            </div>
+                            <img class="img-fluid" src="{% static "img/service/therapy2.jpg" %}" alt="">
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
