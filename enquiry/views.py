@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from.forms import EnquiryForm
+from enquiry.forms import EnquiryForm
 # Create your views here.
 def enquiry(request):
     if request.method == 'POST':
@@ -14,4 +14,4 @@ def enquiry(request):
             print(name+email+phone+subject+body)
             form.save()
     form = EnquiryForm()
-    return render(request, 'enquiry.html',{'form':form})
+    return render(request, 'enquiry.html',{'form':form,'page_title':"Contact Us"})

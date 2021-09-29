@@ -25,14 +25,13 @@ SECRET_KEY = 'x1l^_po9+$-!x(!te)kg&gojtzu+f@8h#(y^m8v767%5^51a*%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['foryoumel.com.au']
+ALLOWED_HOSTS = ['foryoumel.com.au','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'contact',
-    'gallery',
+    'shop',
     'enquiry',
     'service',
     'homepage',
