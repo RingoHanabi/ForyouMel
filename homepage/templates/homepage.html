@@ -1,17 +1,36 @@
 {% extends "template.html" %}
 {% load static %}
 {% block content %}
+    <style>
+        @media (max-width: 768px) {
+            .header_text {
+                font-size: 3rem;
+                line-height: 3rem;
+            }
 
+            .masthead{
+                padding-top: 23rem !important;
+                padding-bottom: 0rem !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header_text {
+                font-size: 4rem;
+                line-height: 4rem;
+            }
+        }
+
+    </style>
     <title>
         ForYouMel - Florist Design & Rental shop
     </title>
 
     <!-- Masthead-->
-    <header class="masthead" style="background-image: url('{% static "img/gallery/tiffany-rebecca-fSrSsuastUg-unsplash.jpg" %}')">
+    <header class="masthead"
+            style="background-image: url('{% static "img/gallery/tiffany-rebecca-fSrSsuastUg-unsplash.jpg" %}')">
         <div class="container" style="height: 300px">
-            <div class="masthead-subheading">Welcome To For You Flowers</div>
-            <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="/service">Find out more about us</a>
+            <div class="masthead-subheading header_text">Welcome To For You Flowers</div>
         </div>
     </header>
     <!-- Services-->
@@ -167,7 +186,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-sm-6 mb-6" >
+                <div class="col-lg-6 col-sm-6 mb-6">
                     <!-- Portfolio item 1-->
                     <div class="portfolio-item">
                         <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
@@ -201,22 +220,6 @@
         </div>
     </section>
 
-    <!-- Contact-->
-    {#    <section class="page-section" id="contact" style="background-image: url('{% static "img/homepage/footer.jpg" %}')">#}
-    <section class="page-section" id="contact" style="background-color: white">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase" style="color: darkslategrey">Contact Us</h2>
-                <h3 class="section-subheading text-muted">Let us know what you need!</h3>
-            </div>
-            <div>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/weixin-brands.svg' %}">Wechat: Foryoumel</p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/glyph-logo_May2016.png' %}">Instagram: <a href="https://www.instagram.com/foryouflowersmel/">For You Flowers Studio</a></p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/xiaohongshu.png' %}">小红书: For You Flowers 墨尔本</p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/email.png' %}">Email: <a href="mailto:foryoumel@outlook.com">foryoumel@outlook.com</a></p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/smartphone-call.png' %}">Phone: 0452026166</p>
-            </div>
-        </div>
-    </section>
+
 
 {% endblock %}

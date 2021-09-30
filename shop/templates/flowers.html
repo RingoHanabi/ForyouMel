@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
 
+
+
     <title>
         ForYouMel - Florist Design & Rental shop
     </title>
@@ -9,15 +11,21 @@
     <!-- Masthead-->
     <header class="masthead" style="background-image: url('{% static "img/gallery/flower header.jpg" %}')">
         <div class="container" style="height: 300px">
-            <div class="masthead-subheading">Our Flowers</div>
+            <div class="masthead-subheading"></div>
             <div class="masthead-heading text-uppercase"></div>
         </div>
     </header>
     <!-- Portfolio Grid-->
+
+
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Our Bouquet</h2>
+                <h2 class="section-heading text-uppercase" style="font-size: 3rem">Flowers</h2>
+                <h3 class="section-subheading text-muted"></h3>
+            </div>
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase" id="Rose">Rose</h2>
                 <h3 class="section-subheading text-muted"></h3>
             </div>
             <div class="row">
@@ -28,7 +36,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static "img/gallery/9dfdd8f4aec91d4937364c3c1980270.jpg" %}" alt="">
+                            <img class="img-fluid" src="{% static "img/gallery/9dfdd8f4aec91d4937364c3c1980270.jpg" %}"
+                                 alt="">
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Bouquet 1</div>
@@ -43,7 +52,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static "img/gallery/200216f84140cf4c7b82e8b000d308f.jpg" %}" alt="">
+                            <img class="img-fluid" src="{% static "img/gallery/200216f84140cf4c7b82e8b000d308f.jpg" %}"
+                                 alt="">
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Bouquet 1</div>
@@ -73,7 +83,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static "img/gallery/ca2916d07835c6946d80dffa2486858.jpg" %}" alt="">
+                            <img class="img-fluid" src="{% static "img/gallery/ca2916d07835c6946d80dffa2486858.jpg" %}"
+                                 alt="">
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Bouquet 1</div>
@@ -82,6 +93,10 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase" id="Lily">Lily</h2>
+                <h3 class="section-subheading text-muted"></h3>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-3 mb-3">
@@ -91,7 +106,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static "img/gallery/9dfdd8f4aec91d4937364c3c1980270.jpg" %}" alt="">
+                            <img class="img-fluid" src="{% static "img/gallery/9dfdd8f4aec91d4937364c3c1980270.jpg" %}"
+                                 alt="">
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Bouquet 1</div>
@@ -106,7 +122,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static "img/gallery/200216f84140cf4c7b82e8b000d308f.jpg" %}" alt="">
+                            <img class="img-fluid" src="{% static "img/gallery/200216f84140cf4c7b82e8b000d308f.jpg" %}"
+                                 alt="">
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Bouquet 1</div>
@@ -136,7 +153,8 @@
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
-                            <img class="img-fluid" src="{% static "img/gallery/ca2916d07835c6946d80dffa2486858.jpg" %}" alt="">
+                            <img class="img-fluid" src="{% static "img/gallery/ca2916d07835c6946d80dffa2486858.jpg" %}"
+                                 alt="">
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Bouquet 1</div>
@@ -149,23 +167,33 @@
 
         </div>
     </section>
+    <nav style='padding: 0px !important;margin-top: 8rem;width: auto' id="navbar-example3"
+         class="position-fixed navbar navbar-light bg-light flex-column align-items-stretch p-3">
+{#        <a class="navbar-brand" href="#" style="font-size: 1.5rem"><b>Flower</b></a>#}
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sections
+            </a>
 
-    <!-- Contact-->
-    {#    <section class="page-section" id="contact" style="background-image: url('{% static "img/homepage/footer.jpg" %}')">#}
-    <section class="page-section" id="contact" style="background-color: white">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase" style="color: darkslategrey">Contact Us</h2>
-                <h3 class="section-subheading text-muted">Let us know what you need!</h3>
-            </div>
-            <div>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/weixin-brands.svg' %}">Wechat: Foryoumel</p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/glyph-logo_May2016.png' %}">Instagram: <a href="https://www.instagram.com/foryouflowersmel/">For You Flowers Studio</a></p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/xiaohongshu.png' %}">小红书: For You Flowers 墨尔本</p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/email.png' %}">Email: <a href="mailto:foryoumel@outlook.com">foryoumel@outlook.com</a></p>
-                <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/smartphone-call.png' %}">Phone: 0452026166</p>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#Rose">Rose</a>
+                <a class="dropdown-item" href="#Lily">Lily</a>
             </div>
         </div>
-    </section>
+{#        <nav class="nav nav-pills flex-column"#}
+{#             style='font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'>#}
+{##}
+{#            <a class="nav-link" href="#Rose" style="color: black;">Rose</a>#}
+{##}
+{#            <a class="nav-link" href="#lily" style="color: black">Lily</a>#}
+
+            {#            <nav class="nav nav-pills flex-column">#}
+            {#                <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>#}
+            {#                <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>#}
+            {#            </nav>#}
+{#        </nav>#}
+    </nav>
+
 
 {% endblock %}
