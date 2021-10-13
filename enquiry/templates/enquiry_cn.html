@@ -1,0 +1,70 @@
+{% extends "template_cn.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+    <title>
+        ForYouMel - Florist Design & Rental shop
+    </title>
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/enquiry/header.jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading">联系我们</div>
+            <div class="masthead-heading text-uppercase"></div>
+        </div>
+    </header>
+    <!-- Services-->
+    <section class="page-section bg-light" id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">咨询表单</h2>
+                <h3 class="section-subheading text-muted">您可以填写以下表单来联系我们，我们会尽快回复</h3>
+            </div>
+            <div>
+                {% crispy form form.helper %}
+
+
+            </div>
+{#            <div class="container" style="padding-top: 150px">#}
+{#                <div class="text-center">#}
+{#                    <h2 class="section-heading text-uppercase" style="color: darkslategrey">Contact Us</h2>#}
+{#                    <h3 class="section-subheading text-muted">Let us know what you need!</h3>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            <div style="display: inline-block">#}
+{##}
+{#                <div style="display: inline-block; min-width: 180px">#}
+{#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/weixin-brands.svg' %}">Wechat:#}
+{#                        Foryoumel</p>#}
+{#                </div>#}
+{#                <div style="display: inline-block; min-width: 180px">#}
+{#                    <p style="color: darkslategrey"><img width="25px"#}
+{#                                                         src="{% static 'img/contact/glyph-logo_May2016.png' %}">Instagram:#}
+{#                        <a href="https://www.instagram.com/foryouflowersmel/">For You Flowers Studio</a></p>#}
+{#                </div>#}
+{#                <div style="display: inline-block; min-width: 180px">#}
+{#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/xiaohongshu.png' %}">小红书:#}
+{#                        For You Flowers 墨尔本</p>#}
+{#                </div>#}
+{#                <div style="display: inline-block; min-width: 180px">#}
+{#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/email.png' %}">Email:#}
+{#                        <a#}
+{#                                href="mailto:foryoumel@outlook.com">foryoumel@outlook.com</a></p>#}
+{#                </div>#}
+{#                <div style="display: inline-block; min-width: 180px">#}
+{#                    <p style="color: darkslategrey"><img width="25px"#}
+{#                                                         src="{% static 'img/contact/smartphone-call.png' %}">Phone:#}
+{#                        0452026166</p>#}
+{#                </div>#}
+{##}
+{##}
+{#            </div>#}
+        </div>
+    </section>
+    <!-- Portfolio Grid-->
+
+
+
+{% endblock %}
