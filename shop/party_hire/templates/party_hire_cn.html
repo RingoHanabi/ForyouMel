@@ -1,0 +1,86 @@
+{% extends "template_cn.html" %}
+{% load static %}
+{% block content %}
+
+    <title>
+        ForYouMel - Florist Design & Rental shop
+    </title>
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/gallery/party hire (2).jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading"></div>
+            <div class="masthead-heading text-uppercase"></div>
+        </div>
+    </header>
+    <!-- Portfolio Grid-->
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase" style="font-size: 3rem">聚会用品租赁</h2>
+                <h3 class="section-subheading text-muted"></h3>
+            </div>
+            {% for type in types %}
+                <div>
+                    <div class="text-center" id="{{ type.name_en }}">
+                        <h2 class="section-heading text-uppercase">{{ type }}</h2>
+                        <h3 class="section-subheading text-muted"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for party_hire in party_hires %}
+                        {% if party_hire.type.name_en == type.name_en %}
+                            <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
+                                <!-- Portfolio item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" href="../details/cn/{{ party_hire.id }}">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid"
+                                             src="/{{ party_hire.thumbnail }}"
+                                             alt="">
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading">{{ party_hire.name_cn }}</div>
+                                        <div class="portfolio-caption-subheading text-muted">${{ party_hire.price }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+    </section>
+    <nav style=';padding: 0px !important;margin-top: 8rem;width: auto' id="navbar-example3"
+         class="position-fixed navbar navbar-light bg-light flex-column align-items-stretch p-3">
+        {#        <a class="navbar-brand" href="#" style="font-size: 1.5rem"><b>party_hire</b></a>#}
+        <div class="dropdown show">
+            <a style="background-color: black" class="btn btn-secondary dropdown-toggle" href="#" role="button"
+               id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                聚会租赁分类
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#Plinth hire">底座出租</a>
+                <a class="dropdown-item" href="#Dessert Cart Hire">甜品车出租</a>
+                <a class="dropdown-item" href="#Backlight Number & Letters">背光数字和字母</a>
+                <a class="dropdown-item" href="#Neon Signs">霓虹灯</a>
+                <a class="dropdown-item" href="#Backdrop Hire">背景出租</a>
+                <a class="dropdown-item" href="#Party Equipment Hire">派对设备租赁</a>
+                <a class="dropdown-item" href="#Party Hire Packages">派对租用套餐</a>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+
+{% endblock %}

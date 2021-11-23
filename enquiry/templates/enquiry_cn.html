@@ -16,6 +16,23 @@
     </header>
     <!-- Services-->
     <section class="page-section bg-light" id="services">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+
+
+
+                <div {% if message.tags == "error" %}
+                    class="alert alert-danger alert-dismissible fade show"{% elif message.tags == "success" %}
+                    class="alert alert-success alert-dismissible fade show"{% endif %} style="margin-bottom: 0px"
+                    role="alert">
+                    <p>{{ message }}</p>
+                </div>
+
+
+            {% endfor %}
+        </ul>
+    {% endif %}
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">咨询表单</h2>

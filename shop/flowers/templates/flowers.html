@@ -1,0 +1,95 @@
+{% extends "template.html" %}
+{% load static %}
+{% block content %}
+
+
+    <title>
+        ForYouMel - Florist Design & Rental shop
+    </title>
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/gallery/flower header.jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading"></div>
+            <div class="masthead-heading text-uppercase"></div>
+        </div>
+    </header>
+    <!-- Portfolio Grid-->
+
+
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase" style="font-size: 3rem">Flowers</h2>
+                <h3 class="section-subheading text-muted"></h3>
+            </div>
+            {% for type in types %}
+                <div>
+                    <div class="text-center" id="{{ type.name_en }}">
+                        <h2 class="section-heading text-uppercase">{{ type.name_en }}</h2>
+                        <h3 class="section-subheading text-muted"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for flower in flowers %}
+                        {% if flower.type.name_en == type.name_en %}
+                            <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
+                                <!-- Portfolio item 1-->
+                                <div class="portfolio-item">
+                                    <a class="portfolio-link" href="details/{{ flower.id }}">
+                                        <div class="portfolio-hover">
+                                            <div class="portfolio-hover-content"></div>
+                                        </div>
+                                        <img class="img-fluid"
+                                             src="/{{ flower.thumbnail }}"
+                                             alt="">
+                                    </a>
+                                    <div class="portfolio-caption">
+                                        <div class="portfolio-caption-heading">{{ flower.name_en }}</div>
+                                        <div class="portfolio-caption-subheading text-muted">${{ flower.price }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+    </section>
+
+    <nav style=';padding: 0px !important;margin-top: 8rem;width: auto' id="navbar-example3"
+         class="position-fixed navbar navbar-light bg-light flex-column align-items-stretch p-3">
+        {#        <a class="navbar-brand" href="#" style="font-size: 1.5rem"><b>Flower</b></a>#}
+        <div class="dropdown show">
+            <a style="background-color: black" class="btn btn-secondary dropdown-toggle" href="#" role="button"
+               id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sections
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% for type in types %}
+                    <a class="dropdown-item" href="#{{ type.name_en }}">{{ type.name_en }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {#        <nav class="nav nav-pills flex-column"#}
+        {#             style='font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'>#}
+        {##}
+        {#            <a class="nav-link" href="#Rose" style="color: black;">Rose</a>#}
+        {##}
+        {#            <a class="nav-link" href="#lily" style="color: black">Lily</a>#}
+
+        {#            <nav class="nav nav-pills flex-column">#}
+        {#                <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>#}
+        {#                <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>#}
+        {#            </nav>#}
+        {#        </nav>#}
+    </nav>
+
+
+{% endblock %}

@@ -12,20 +12,21 @@ from enquiry.models import Enquiry
 #     body = forms.CharField(widget=forms.Textarea)
 
 class EnquiryForm(forms.ModelForm):
-
-     class Meta:
+    class Meta:
         model = Enquiry
-        fields = ('name','phone','email','subject','body')
+        fields = ('name', 'phone', 'email', 'subject', 'body')
 
-     def __init__(self, *args, **kwargs):
-         super().__init__(*args, **kwargs)
-         self.helper = FormHelper
-         self.helper.form_method = 'post'
-         self.helper.layout = Layout(
-             Field('name', css_class="form-group form-control"),
-             Field('phone', css_class="form-group form-control"),
-             Field('email', css_class="form-group form-control"),
-             Field('subject', css_class="form-group form-control"),
-             Field('body', css_class="form-group form-control"),
-             Submit('submit','Submit', css_class='btn-success')
-         )
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Field('name', css_class="form-group form-control"),
+            Field('phone', css_class="form-group form-control"),
+            Field('email', css_class="form-group form-control"),
+            Field('subject', css_class="form-group form-control"),
+            Field('body', css_class="form-group form-control"),
+            Submit('submit', 'Submit', css_class='btn-success')
+        )
+
+
