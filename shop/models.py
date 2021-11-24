@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 
 
+
 class Type(models.Model):
     name_en = models.CharField(max_length=50, unique=True)
     name_cn = models.CharField(max_length=50, unique=True)
@@ -49,25 +50,30 @@ class Customer(models.Model):
         return self.name
 
 
-class ShoppingCart(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
-
-
-class ShoppingCartItem(models.Model):
-    shopping_cart = models.ForeignKey(ShoppingCart, on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    quantity = models.PositiveIntegerField(default=0)
-
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    # customer = models.OneToOneField(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True, blank=True)
     transaction_id = models.CharField(max_length=200, null=True)
+    delivery = models.CharField(default=True, choices=[('Pick Up', 'Pick Up'), ('Delivery', 'Delivery')],
+                                max_length=200)
 
     def __str__(self):
         return str(self.id)
 
+
 class OrderItem(models.Model):
-    shopping_cart = models.ForeignKey(ShoppingCart, on_delete=models.SET_NULL, null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     quantity = models.PositiveIntegerField(default=0)
+
+
+class ShippingAddress(models.Model):
+    # customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.CharField(max_length=200, null=True)
+    state = models.CharField(max_length=200, null=True)
+    zipcode = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.address

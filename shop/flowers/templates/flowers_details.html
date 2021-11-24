@@ -79,30 +79,61 @@
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="button cart-button">
-                                            <button data-product={{flower.id}} data-action="add" class="btn update-cart" style="width: 100%;">Add to Cart</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-reload"></i>Buy now</button>
+
+                                            <button onclick="addItem();this.innerHTML = 'Cart Added!';this.classList.add('btn-success');this.classList.remove('btn-primary')"
+                                                    class="btn btn-primary update-cart" style="width: 100%;">Add to Cart
+                                            </button>
+                                            <script>
+                                                var cart = JSON.parse(getCookie('cart'))
+                                                if (cart == null) {
+                                                    cart = {}
+                                                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                                                }
+                                                console.log(cart)
+
+                                                function addItem(productID) {
+                                                    console.log(cart)
+                                                    if (cart["{{ flower.pk }}"] == undefined) {
+                                                        cart["{{ flower.pk }}"] = {'quantity': 1}
+                                                    } else {
+                                                        cart["{{ flower.pk }}"]['quantity'] += 1
+                                                    }
+                                                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                                                }
+
+                                                function getCookie(name) {
+                                                    var cookieArr = document.cookie.split(";")
+
+                                                    for (var i = 0; i < cookieArr.length; i++) {
+                                                        var cookiePair = cookieArr[i].split("=")
+
+                                                        if (name == cookiePair[0].trim()) {
+                                                            return decodeURIComponent(cookiePair[1])
+                                                        }
+                                                    }
+                                                    return null
+                                                }
+                                            </script>
                                         </div>
                                     </div>
 
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             <div class="product-details-info">
                 <div class="single-block">
-                        <div class="col-lg-12 col-12">
-                            <div class="info-body custom-responsive-margin">
-                                <h4>Details</h4>
-                                <p>{{ flower.details_en|safe }}</p>
+                    <div class="col-lg-12 col-12">
+                        <div class="info-body custom-responsive-margin">
+                            <h4>Details</h4>
+                            <p>{{ flower.details_en|safe }}</p>
 
-                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,15 +149,7 @@
     <script src="{% static "js/main.js" %}"></script>
     <script src="{% static "js/tiny-slider.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
-    <script>
-    var updateBtn = document.getElementsByClassName("update-cart")
 
-    updateBtn[0].addEventListener('click',function (){
-        var product_type = "flowers"
-        var product_id = this.dataset.product
-        console.log(product_id, product_type)
-    })
-    </script>
 
     <script>
         onload($.scoped())

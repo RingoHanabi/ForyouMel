@@ -16,23 +16,25 @@
     </header>
     <!-- Services-->
     <section class="page-section bg-light" id="services">
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
 
 
 
-                <div {% if message.tags == "error" %}
-                    class="alert alert-danger alert-dismissible fade show"{% elif message.tags == "success" %}
-                    class="alert alert-success alert-dismissible fade show"{% endif %} style="margin-bottom: 0px"
-                    role="alert">
-                    <p>{{ message }}</p>
-                </div>
+                    <div {% if message.tags == "error" %}
+                        class="alert alert-danger alert-dismissible fade show"
+                    {% elif message.tags == "success" %}
+                        class="alert alert-success alert-dismissible fade show"{% endif %}
+                            style="margin-bottom: 0px"
+                        role="alert">
+                        <p>{{ message }}</p>
+                    </div>
 
 
-            {% endfor %}
-        </ul>
-    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Enquiry form</h2>
@@ -44,41 +46,41 @@
 
 
             </div>
-{#            <div class="container" style="padding-top: 150px">#}
-{#                <div class="text-center">#}
-{#                    <h2 class="section-heading text-uppercase" style="color: darkslategrey">Contact Us</h2>#}
-{#                    <h3 class="section-subheading text-muted">Let us know what you need!</h3>#}
-{#                </div>#}
-{##}
-{#            </div>#}
-{#            <div style="display: inline-block">#}
-{##}
-{#                <div style="display: inline-block; min-width: 180px">#}
-{#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/weixin-brands.svg' %}">Wechat:#}
-{#                        Foryoumel</p>#}
-{#                </div>#}
-{#                <div style="display: inline-block; min-width: 180px">#}
-{#                    <p style="color: darkslategrey"><img width="25px"#}
-{#                                                         src="{% static 'img/contact/glyph-logo_May2016.png' %}">Instagram:#}
-{#                        <a href="https://www.instagram.com/foryouflowersmel/">For You Flowers Studio</a></p>#}
-{#                </div>#}
-{#                <div style="display: inline-block; min-width: 180px">#}
-{#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/xiaohongshu.png' %}">小红书:#}
-{#                        For You Flowers 墨尔本</p>#}
-{#                </div>#}
-{#                <div style="display: inline-block; min-width: 180px">#}
-{#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/email.png' %}">Email:#}
-{#                        <a#}
-{#                                href="mailto:foryoumel@outlook.com">foryoumel@outlook.com</a></p>#}
-{#                </div>#}
-{#                <div style="display: inline-block; min-width: 180px">#}
-{#                    <p style="color: darkslategrey"><img width="25px"#}
-{#                                                         src="{% static 'img/contact/smartphone-call.png' %}">Phone:#}
-{#                        0452026166</p>#}
-{#                </div>#}
-{##}
-{##}
-{#            </div>#}
+            {#            <div class="container" style="padding-top: 150px">#}
+            {#                <div class="text-center">#}
+            {#                    <h2 class="section-heading text-uppercase" style="color: darkslategrey">Contact Us</h2>#}
+            {#                    <h3 class="section-subheading text-muted">Let us know what you need!</h3>#}
+            {#                </div>#}
+            {##}
+            {#            </div>#}
+            {#            <div style="display: inline-block">#}
+            {##}
+            {#                <div style="display: inline-block; min-width: 180px">#}
+            {#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/weixin-brands.svg' %}">Wechat:#}
+            {#                        Foryoumel</p>#}
+            {#                </div>#}
+            {#                <div style="display: inline-block; min-width: 180px">#}
+            {#                    <p style="color: darkslategrey"><img width="25px"#}
+            {#                                                         src="{% static 'img/contact/glyph-logo_May2016.png' %}">Instagram:#}
+            {#                        <a href="https://www.instagram.com/foryouflowersmel/">For You Flowers Studio</a></p>#}
+            {#                </div>#}
+            {#                <div style="display: inline-block; min-width: 180px">#}
+            {#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/xiaohongshu.png' %}">小红书:#}
+            {#                        For You Flowers 墨尔本</p>#}
+            {#                </div>#}
+            {#                <div style="display: inline-block; min-width: 180px">#}
+            {#                    <p style="color: darkslategrey"><img width="25px" src="{% static 'img/contact/email.png' %}">Email:#}
+            {#                        <a#}
+            {#                                href="mailto:foryoumel@outlook.com">foryoumel@outlook.com</a></p>#}
+            {#                </div>#}
+            {#                <div style="display: inline-block; min-width: 180px">#}
+            {#                    <p style="color: darkslategrey"><img width="25px"#}
+            {#                                                         src="{% static 'img/contact/smartphone-call.png' %}">Phone:#}
+            {#                        0452026166</p>#}
+            {#                </div>#}
+            {##}
+            {##}
+            {#            </div>#}
         </div>
     </section>
     <!-- Portfolio Grid-->
