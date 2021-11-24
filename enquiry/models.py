@@ -9,7 +9,7 @@ class Enquiry(models.Model):
     email = models.EmailField(max_length=100)
     subject = models.CharField(max_length=100)
     body = models.TextField()
-    time = models.DateTimeField(default=datetime.now())
+    time = models.DateTimeField(auto_now_add=True)
     solved = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
