@@ -74,7 +74,7 @@
                             <p class="category">Bouquet: <a
                                     href="{% url "balloon cn" %}#{{ balloon.type.name_en }}">{{ balloon.type.name_cn }}</a>
                             </p>
-                            <h3 class="price">${{ balloon.price }}</h3>
+                            <h3 class="price">${{ balloon.price|floatformat:2 }}</h3>
                             <p class="info-text">{{ balloon.description_cn }}</p>
 
                             <div class="bottom-content">

@@ -72,7 +72,7 @@
                             <p class="category">Bouquet: <a
                                     href="{% url "party_hire" %}#{{ party_hire.type.name_en }}">{{ party_hire.type.name_en }}</a>
                             </p>
-                            <h3 class="price">${{ party_hire.price }}</h3>
+                            <h3 class="price">${{ party_hire.price|floatformat:2 }}</h3>
                             <p class="info-text">{{ party_hire.description_en }}</p>
 
                             <div class="bottom-content">
