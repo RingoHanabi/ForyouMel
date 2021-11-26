@@ -60,7 +60,44 @@ def shopping_cart_cn(request):
         return redirect("shopping cart en")
     if request.method == 'POST' and request.POST["language"] == "Chinese":
         return redirect("shopping cart cn")
-    return render(request, 'shopping_cart_cn.html', {'page_title': "购物车"})
+
+    print(request.COOKIES)
+    cart = json.loads(request.COOKIES["cart"])
+
+    products = Product.objects.all()
+
+    data = []
+    total = 0
+    for item in cart:
+        product = products.filter(id=item).first()
+        product_type = {}
+        if (len(flower.objects.all().filter(id=product.id)) != 0):
+            product = flower.objects.all().filter(id=product.id).first()
+            product_type = {
+                "en": "Flowers",
+                "cn": "花卉"
+            }
+        elif (len(balloon.objects.all().filter(id=product.id)) != 0):
+            product = balloon.objects.all().filter(id=product.id).first()
+            product_type = {
+                "en": "Balloon",
+                "cn": "气球"
+            }
+
+        elif (len(party_hire.objects.all().filter(id=product.id)) != 0):
+            product = party_hire.objects.all().filter(id=product.id).first()
+            product_type = {
+                "en": "Party Hire",
+                "cn": "聚会用品"
+            }
+
+        quantity = cart[item]['quantity']
+        subtotal = int(quantity) * product.price
+        total += subtotal
+        data.append([product, quantity, subtotal, product_type])
+
+    print(data)
+    return render(request, 'shopping_cart_cn.html', {'page_title': "Shopping Cart", "data": data, "total": total})
 
 
 def checkout_en(request):

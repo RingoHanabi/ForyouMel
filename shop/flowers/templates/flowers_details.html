@@ -85,10 +85,7 @@
                                             </button>
                                             <script>
                                                 var cart = JSON.parse(getCookie('cart'))
-                                                if (cart == null) {
-                                                    cart = {}
-                                                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-                                                }
+
                                                 console.log(cart)
 
                                                 function addItem(productID) {

@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/LineIcons.3.0.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/glightbox.min.css' %}"/>
@@ -19,8 +19,8 @@
         </div>
     </header>
     <!-- Portfolio Grid-->
-    
-        <div class="shopping-cart section">
+
+    <div class="shopping-cart section">
         <div class="container">
             <div class="cart-list-head">
                 <!-- Cart List Title -->
@@ -30,133 +30,50 @@
 
                         </div>
                         <div class="col-lg-4 col-md-3 col-12">
-                            <p>Product Name</p>
+                            <p>产品名称</p>
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
-                            <p>Quantity</p>
+                            <p>数量</p>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>Subtotal</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>Discount</p>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <p>小计</p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
-                            <p>Remove</p>
+                            <p>去除商品</p>
                         </div>
                     </div>
                 </div>
                 <!-- End Cart List Title -->
-                <!-- Cart Single List list -->
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
-                                    Canon EOS M50 Mirrorless Camera</a></h5>
-                            <p class="product-des">
-                                <span><em>Type:</em> Mirrorless</span>
-                                <span><em>Color:</em> Black</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
+                {% for each in data %}
+                    <!-- Cart Single List list -->
+                    <div class="cart-single-list">
+                        <div class="row align-items-center">
+                            <div class="col-lg-1 col-md-1 col-12">
+                                <a href="product-details.html"><img src="/{{ each.0.thumbnail }}" alt="#"></a>
+                            </div>
+                            <div class="col-lg-4 col-md-3 col-12">
+                                <h5 class="product-name"><a href="product-details.html">
+                                    {{ each.0.name_cn }}</a></h5>
+                                <p class="product-des">
+                                    <span><em>Type:</em> {{ each.3.cn }}</span>
+                                    <span><em>Sub_type:</em> {{ each.0.type.name_cn }}</span>
+                                </p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <input id="product_{{ each.0.id }}" onchange="updateCart({{ each.0.id }})"
+                                       style="height: 40px;width: 90px" class="form-control" value="{{ each.1 }}">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <p>${{ each.2 }}</p>
+                            </div>
+
+                            <div class="col-lg-1 col-md-2 col-12">
+                                <a class="remove-item" onclick="removeItem({{ each.0.id }})">x</a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$910.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$29.00</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
                     </div>
-                </div>
-                <!-- End Single List list -->
-                <!-- Cart Single List list -->
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
-                                    Apple iPhone X 256 GB Space Gray</a></h5>
-                            <p class="product-des">
-                                <span><em>Memory:</em> 256 GB</span>
-                                <span><em>Color:</em> Space Gray</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$1100.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>—</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List list -->
-                <!-- Cart Single List list -->
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">HP LaserJet Pro Laser Printer</a></h5>
-                            <p class="product-des">
-                                <span><em>Type:</em> Laser</span>
-                                <span><em>Color:</em> White</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$550.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>—</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List list -->
+                    <!-- End Single List list -->
+                {% endfor %}
             </div>
             <div class="row">
                 <div class="col-12">
@@ -165,27 +82,23 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-6 col-12">
                                 <div class="left">
-                                    <div class="coupon">
-                                        <form action="#" target="_blank">
-                                            <input name="Coupon" placeholder="Enter Your Coupon">
-                                            <div class="button">
-                                                <button class="btn">Apply Coupon</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    {#                                    <div class="coupon">#}
+                                    {#                                        <form action="#" target="_blank">#}
+                                    {#                                            <input name="Coupon" placeholder="Enter Your Coupon">#}
+                                    {#                                            <div class="button">#}
+                                    {#                                                <button class="btn">Apply Coupon</button>#}
+                                    {#                                            </div>#}
+                                    {#                                        </form>#}
+                                    {#                                    </div>#}
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="right">
                                     <ul>
-                                        <li>Cart Subtotal<span>$2560.00</span></li>
-                                        <li>Shipping<span>Free</span></li>
-                                        <li>You Save<span>$29.00</span></li>
-                                        <li class="last">You Pay<span>$2531.00</span></li>
+                                        <li>购物车总计<span>${{ total }}</span></li>
                                     </ul>
                                     <div class="button">
-                                        <a href="checkout.html" class="btn">Checkout</a>
-                                        <a href="product-grids.html" class="btn btn-alt">Continue shopping</a>
+                                        <a href="checkout.html" class="btn btn-primary">前往付款</a>
                                     </div>
                                 </div>
                             </div>
@@ -196,5 +109,40 @@
             </div>
         </div>
     </div>
+    <script>
 
+        var cart = JSON.parse(getCookie('cart'))
+
+        function removeItem(product_id) {
+            delete cart[product_id]
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            location.reload()
+        }
+
+        function updateCart(product_id) {
+            console.log(product_id)
+            quantity = document.getElementById("product_" + product_id).value
+            if (quantity <= 0) {
+                delete cart[product_id]
+            } else {
+                cart[product_id]['quantity'] = quantity
+            }
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            location.reload()
+        }
+
+        function getCookie(name) {
+            var cookieArr = document.cookie.split(";")
+
+            for (var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=")
+
+                if (name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1])
+                }
+            }
+            return null
+        }
+
+    </script>
 {% endblock %}

@@ -80,13 +80,38 @@
                             <div class="bottom-content">
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-reload"></i>立刻购买</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
                                         <div class="button cart-button">
-                                            <button class="btn" style="width: 100%;">加入购物车</button>
+
+                                            <button onclick="addItem();this.innerHTML = 'Cart Added!';this.classList.add('btn-success');this.classList.remove('btn-primary')"
+                                                    class="btn btn-primary update-cart" style="width: 100%;">加入购物车
+                                            </button>
+                                            <script>
+                                                var cart = JSON.parse(getCookie('cart'))
+                                                console.log(cart)
+
+                                                function addItem(productID) {
+                                                    console.log(cart)
+                                                    if (cart["{{ balloon.pk }}"] == undefined) {
+                                                        cart["{{ balloon.pk }}"] = {'quantity': 1}
+                                                    } else {
+                                                        cart["{{ balloon.pk }}"]['quantity'] += 1
+                                                    }
+                                                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                                                }
+
+                                                function getCookie(name) {
+                                                    var cookieArr = document.cookie.split(";")
+
+                                                    for (var i = 0; i < cookieArr.length; i++) {
+                                                        var cookiePair = cookieArr[i].split("=")
+
+                                                        if (name == cookiePair[0].trim()) {
+                                                            return decodeURIComponent(cookiePair[1])
+                                                        }
+                                                    }
+                                                    return null
+                                                }
+                                            </script>
                                         </div>
                                     </div>
 

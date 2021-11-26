@@ -79,14 +79,40 @@
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="button cart-button">
-                                            <button class="btn" style="width: 100%;">Add to Cart</button>
+
+                                            <button onclick="addItem();this.innerHTML = 'Cart Added!';this.classList.add('btn-success');this.classList.remove('btn-primary')"
+                                                    class="btn btn-primary update-cart" style="width: 100%;">Add to Cart
+                                            </button>
+                                            <script>
+                                                var cart = JSON.parse(getCookie('cart'))
+                                                console.log(cart)
+
+                                                function addItem(productID) {
+                                                    console.log(cart)
+                                                    if (cart["{{ party_hire.pk }}"] == undefined) {
+                                                        cart["{{ party_hire.pk }}"] = {'quantity': 1}
+                                                    } else {
+                                                        cart["{{ party_hire.pk }}"]['quantity'] += 1
+                                                    }
+                                                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                                                }
+
+                                                function getCookie(name) {
+                                                    var cookieArr = document.cookie.split(";")
+
+                                                    for (var i = 0; i < cookieArr.length; i++) {
+                                                        var cookiePair = cookieArr[i].split("=")
+
+                                                        if (name == cookiePair[0].trim()) {
+                                                            return decodeURIComponent(cookiePair[1])
+                                                        }
+                                                    }
+                                                    return null
+                                                }
+                                            </script>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-reload"></i>Buy now</button>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -96,13 +122,13 @@
             </div>
             <div class="product-details-info">
                 <div class="single-block">
-                        <div class="col-lg-12 col-12">
-                            <div class="info-body custom-responsive-margin">
-                                <h4>Details</h4>
-                                <p>{{ party_hire.details_en|safe }}</p>
+                    <div class="col-lg-12 col-12">
+                        <div class="info-body custom-responsive-margin">
+                            <h4>Details</h4>
+                            <p>{{ party_hire.details_en|safe }}</p>
 
-                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
