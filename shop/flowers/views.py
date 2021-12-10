@@ -22,15 +22,8 @@ def flower_cn(request):
         return redirect("flower cn")
     all_flowers = flower.objects.all()
     all_flower_types = flower_type.objects.all()
-    page_data = []
-    for types in all_flower_types:
-        temp = []
-        for each in all_flowers:
-            if each.type.name_cn == types.name_cn:
-                temp.append(each)
-        page_data.append(temp)
-    print(page_data)
-    return render(request, 'flowers_cn.html',{'page_title':"花束&花卉","types":all_flower_types,"flowers":all_flowers})
+    all_flower_sub_types = flower_sub_type.objects.all()
+    return render(request, 'flowers_cn.html',{'page_title':"花束 & 花卉","types":all_flower_types,"sub_types":all_flower_sub_types,"flowers":all_flowers})
 
 def flower_details_en(request, id):
     if request.method == 'POST' and request.POST["language"] == "English":
