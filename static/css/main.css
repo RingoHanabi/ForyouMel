@@ -1444,10 +1444,9 @@ ol {
 	01. Start Header CSS
 ========================================*/
 .header {
-  width: 100%;
+  width: 95%;
   background: #fff;
   position: relative;
-  width: 100%;
   /* Start Topbar */
   /* End Topbar */
   /* Start Main Menu Search */
@@ -2186,7 +2185,7 @@ ol {
 /*  }*/
 /*}*/
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .header .mobile-menu-btn .toggler-icon {
     background-color: #081828;
   }
@@ -2340,7 +2339,7 @@ ol {
 .header .mega-category-menu:hover .sub-category {
   opacity: 1;
   visibility: visible;
-  top: 61px;
+  top: 32px;
 }
 
 .header .mega-category-menu .sub-category {

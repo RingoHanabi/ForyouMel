@@ -8,7 +8,7 @@
                 line-height: 3rem;
             }
 
-            .masthead{
+            .masthead {
                 padding-top: 23rem !important;
                 padding-bottom: 0rem !important;
             }
@@ -219,7 +219,18 @@
             </div>
         </div>
     </section>
+    <script>
+        window.onload = function () {
+            if (localStorage.getItem('popState') != 'shown') {
+                alert("This site is still under construction, if you find any issue with our site, please contact us or submit a enquiry")
+                localStorage.setItem('popState', 'shown')
+            }
 
+
+        }
+
+
+    </script>
 
 
 {% endblock %}

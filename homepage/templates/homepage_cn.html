@@ -8,7 +8,7 @@
                 line-height: 3rem;
             }
 
-            .masthead{
+            .masthead {
                 padding-top: 23rem !important;
                 padding-bottom: 0rem !important;
             }
@@ -218,7 +218,17 @@
             </div>
         </div>
     </section>
+    <script>
+        window.onload = function () {
+            if (localStorage.getItem('popState') != 'shown') {
+                alert("此网站还在建设当中，如果您发现Bug或有任何问题，请联系我们进行修复")
+                localStorage.setItem('popState', 'shown')
+            }
 
+
+        }
+
+    </script>
 
 
 {% endblock %}

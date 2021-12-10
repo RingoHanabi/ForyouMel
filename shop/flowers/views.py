@@ -1,6 +1,7 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
-from .models import flower, flower_type
+from .models import flower, flower_type, flower_sub_type
+import json
 
 # Create your views here.
 def flower_en(request):
@@ -11,15 +12,8 @@ def flower_en(request):
 
     all_flowers = flower.objects.all()
     all_flower_types = flower_type.objects.all()
-    page_data = []
-    for types in all_flower_types:
-        temp = []
-        for each in all_flowers:
-            if each.type.name_cn == types.name_cn:
-                temp.append(each)
-        page_data.append(temp)
-    print(page_data)
-    return render(request, 'flowers.html',{'page_title':"Our Flowers","types":all_flower_types,"flowers":all_flowers})
+    all_flower_sub_types = flower_sub_type.objects.all()
+    return render(request, 'flowers.html',{'page_title':"Our Flowers","types":all_flower_types,"sub_types":all_flower_sub_types,"flowers":all_flowers})
 
 def flower_cn(request):
     if request.method == 'POST' and request.POST["language"] == "English":
@@ -55,3 +49,25 @@ def flower_details_cn(request,id):
     flower_detail = flower.objects.all().filter(id = id).first()
 
     return render(request, 'flowers_details_cn.html',{'page_title':"花束:"+flower_detail.name_cn,"flower":flower_detail})
+
+def post_flower_maintypes(request):
+    if request.is_ajax and request.method == "POST":
+        main_types = flower_type.objects.all()
+        return_data = []
+        for each in main_types:
+            return_data.append([each.id,each.name_cn])
+        return_data = json.dumps(return_data)
+        print(return_data)
+        return JsonResponse(return_data, status=200,safe=False)
+
+
+def post_flower_subtypes(request):
+    if request.is_ajax and request.method == "POST":
+        main_type_id = request.POST.get("main_type_id",None)
+        sub_types = flower_sub_type.objects.all().filter(main_type = main_type_id)
+        return_data = []
+        for each in sub_types:
+            return_data.append([each.id, each.__str__()])
+
+        return_data = json.dumps(return_data)
+        return JsonResponse(return_data, status=200,safe=False)
