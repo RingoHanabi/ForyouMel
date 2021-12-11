@@ -78,11 +78,11 @@
                     <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
                     <ul class="sub-category">
                         {% for type in types %}
-                            <li><a href="product-grids.html">{{ type.name_en }}<i class="lni lni-chevron-right"></i></a>
+                            <li><a href="#{{ type.name_en }}">{{ type.name_en }}<i class="lni lni-chevron-right"></i></a>
                                 <ul class="inner-sub-category">
                                     {% for sub_type in sub_types %}
                                         {% if sub_type.main_type == type %}
-                                            <li><a href="product-grids.html">{{ sub_type.name_en}}</a></li>
+                                            <li><a href="#{{ sub_type.name_en }}">{{ sub_type.name_en}}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>

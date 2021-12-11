@@ -27,7 +27,7 @@
             </div>
             {% for type in types %}
                 <div>
-                    <div class="text-center" id="{{ type.name_cn }}">
+                    <div class="text-center" id="{{ type.name_en }}">
                         <h2 class="section-heading text-uppercase" style="font-size: 50px">{{ type.name_cn }}</h2>
                         <h3 class="section-subheading text-muted"></h3>
                     </div>
@@ -35,7 +35,7 @@
                 {% for sub_type in sub_types %}
                     {% if sub_type.main_type == type %}
                         <div>
-                            <div class="text-center" id="{{ sub_type.name_cn }}">
+                            <div class="text-center" id="{{ sub_type.name_en }}">
                                 <h3 class="section-heading text-uppercase"
                                     style="font-size: 35px">{{ sub_type.name_cn }}</h3>
                                 <h3 class="section-subheading text-muted"></h3>
@@ -47,7 +47,7 @@
                                     <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
                                         <!-- Portfolio item 1-->
                                         <div class="portfolio-item">
-                                            <a class="portfolio-link" href="details/{{ flower.id }}">
+                                            <a class="portfolio-link" href="../details/cn/{{ flower.id }}">
                                                 <div class="portfolio-hover">
                                                     <div class="portfolio-hover-content"></div>
                                                 </div>
@@ -83,11 +83,11 @@
                     <span class="cat-button"><i class="lni lni-menu"></i>所有花卉种类</span>
                     <ul class="sub-category">
                         {% for type in types %}
-                            <li><a href="product-grids.html">{{ type.name_cn }}<i class="lni lni-chevron-right"></i></a>
+                            <li><a href="#{{ type.name_en }}">{{ type.name_cn }}<i class="lni lni-chevron-right"></i></a>
                                 <ul class="inner-sub-category">
                                     {% for sub_type in sub_types %}
                                         {% if sub_type.main_type == type %}
-                                            <li><a href="product-grids.html">{{ sub_type.name_cn}}</a></li>
+                                            <li><a href="#{{ sub_type.name_en }}">{{ sub_type.name_cn}}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
