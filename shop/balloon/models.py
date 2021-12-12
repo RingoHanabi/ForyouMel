@@ -14,8 +14,17 @@ class balloon_type(Type):
         ordering = ['order']
 
 
+
+class balloon_sub_type(Type):
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+    main_type = models.ForeignKey(balloon_type, on_delete=models.CASCADE)
+
+    class Meta(object):
+        ordering = ['order']
+
 class balloon(Product):
-    type = models.ForeignKey(balloon_type, on_delete=models.DO_NOTHING)
+    main_type = models.ForeignKey(balloon_type, on_delete=models.CASCADE, null=True)
+    type = models.ForeignKey(balloon_sub_type, on_delete=models.DO_NOTHING)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
     supplyment_image10 = models.ImageField(upload_to="static/img/flowers/", default="image")
     supplyment_image11 = models.ImageField(upload_to="static/img/flowers/", default="image")

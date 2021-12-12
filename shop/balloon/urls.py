@@ -6,5 +6,7 @@ urlpatterns = [
     path('cn/', views.balloon_cn, name = "balloon cn"),
     path('details/<id>/', views.balloon_details_en, name="balloon details"),
     path('details/cn/<id>/', views.balloon_details_cn, name="balloon details cn"),
+    path('post_main_type/', views.post_balloon_maintypes, name="balloon main type post"),
+    path('post_sub_type/', views.post_balloon_subtypes, name="balloon sub type post"),
 
 ]

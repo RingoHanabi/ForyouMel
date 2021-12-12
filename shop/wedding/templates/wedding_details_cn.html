@@ -68,10 +68,10 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
                             <h2 class="title">{{ wedding.name_cn }}</h2>
-                            <p class="category">Bouquet: <a
+                            <p class="category">婚礼布局: <a
                                     href="{% url "wedding cn" %}#{{ wedding.type.name_en }}">{{ wedding.type.name_cn }}</a>
                             </p>
-                            <h3 class="price">${{ wedding.price|floatformat:2 }}</h3>
+                            <h3 class="price">${{ wedding.price|floatformat:2 }}起</h3>
                             <p class="info-text">{{ wedding.description_cn }}</p>
 
                             <div class="bottom-content">

@@ -69,14 +69,14 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
                             <h2 class="title">{{ wedding.name_en }}</h2>
-                            <p class="category">Bouquet: <a
+                            <p class="category">Wedding Scene preparation: <a
                                     href="{% url "wedding" %}#{{ wedding.type.name_en }}">{{ wedding.type.name_en }}</a>
                             </p>
-                            <h3 class="price">${{ wedding.price|floatformat:2 }}</h3>
+                            <h3 class="price">From ${{ wedding.price|floatformat:2 }}</h3>
                             <p class="info-text">{{ wedding.description_en }}</p>
 
                             <div class="bottom-content">
-                                <p>Please kindly talk to one of our friendly stuff. Contacts is displayed at the bottom
+                                <p>Since wedding scene preparation is a highly customised service. Please kindly talk to one of our friendly stuff. Contacts is displayed at the bottom
                                     of the page or your can checkout <a href="{% url "enquiry" %}">Our Contacts</a> page
                                     to submit an enquiry</p>
                             </div>

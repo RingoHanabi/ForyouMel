@@ -69,7 +69,7 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
                             <h2 class="title">{{ balloon.name_en }}</h2>
-                            <p class="category">Bouquet: <a
+                            <p class="category"><a href="{% url "balloon" %}#{{ balloon.main_type.name_en }}">{{ balloon.main_type.name_en }}</a>: <a
                                     href="{% url "balloon" %}#{{ balloon.type.name_en }}">{{ balloon.type.name_en }}</a>
                             </p>
                             <h3 class="price">${{ balloon.price|floatformat:2 }}</h3>

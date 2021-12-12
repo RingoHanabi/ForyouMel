@@ -17,69 +17,156 @@
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase" style="font-size: 3rem">Party Hire</h2>
+                <h1 class="section-heading text-uppercase" style="font-size: 60px">Party Hire</h1>
                 <h3 class="section-subheading text-muted"></h3>
             </div>
             {% for type in types %}
                 <div>
                     <div class="text-center" id="{{ type.name_en }}">
-                        <h2 class="section-heading text-uppercase">{{ type.name_en }}</h2>
+                        <h2 class="section-heading text-uppercase" style="font-size: 50px">{{ type.name_en }}</h2>
                         <h3 class="section-subheading text-muted"></h3>
                     </div>
                 </div>
-                <div class="row">
-                    {% for party_hire in party_hires %}
-                        {% if party_hire.type.name_en == type.name_en %}
-                            <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
-                                <!-- Portfolio item 1-->
-                                <div class="portfolio-item">
-                                    <a class="portfolio-link" href="details/{{ party_hire.id }}">
-                                        <div class="portfolio-hover">
-                                            <div class="portfolio-hover-content"></div>
-                                        </div>
-                                        <img class="img-fluid"
-                                             src="/{{ party_hire.thumbnail }}"
-                                             alt="">
-                                    </a>
-                                    <div class="portfolio-caption">
-                                        <div class="portfolio-caption-heading">{{ party_hire.name_en }}</div>
-                                        <div class="portfolio-caption-subheading text-muted">${{ party_hire.price|floatformat:2 }}</div>
-                                    </div>
-                                </div>
+                {% for sub_type in sub_types %}
+                    {% if sub_type.main_type == type %}
+                        <div>
+                            <div class="text-center" id="{{ sub_type.name_en }}">
+                                <h3 class="section-heading text-uppercase"
+                                    style="font-size: 35px">{{ sub_type.name_en }}</h3>
+                                <h3 class="section-subheading text-muted"></h3>
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        </div>
+                        <div class="row">
+                            {% for party_hire in party_hires %}
+                                {% if party_hire.type.name_en == sub_type.name_en %}
+                                    <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
+                                        <!-- Portfolio item 1-->
+                                        <div class="portfolio-item">
+                                            <a class="portfolio-link" href="details/{{ party_hire.id }}">
+                                                <div class="portfolio-hover">
+                                                    <div class="portfolio-hover-content"></div>
+                                                </div>
+                                                <img class="img-fluid"
+                                                     src="/{{ party_hire.thumbnail }}"
+                                                     alt="">
+                                            </a>
+                                            <div class="portfolio-caption">
+                                                <div class="portfolio-caption-heading">{{ party_hire.name_en }}</div>
+                                                <div class="portfolio-caption-subheading text-muted">
+                                                    ${{ party_hire.price|floatformat:2 }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
 
-                </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
 
             {% endfor %}
 
 
         </div>
     </section>
-    <nav style=';padding: 0px !important;margin-top: 8rem;width: auto' id="navbar-example3"
-         class="position-fixed navbar navbar-light bg-light flex-column align-items-stretch p-3">
-        {#        <a class="navbar-brand" href="#" style="font-size: 1.5rem"><b>party_hire</b></a>#}
-        <div class="dpd show">
-            <a style="background-color: black" class="btn btn-secondary dropdown-toggle" href="#" role="button"
-               id="dropdownMenuLink"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Party Hire Sections
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#Plinth hire">Plinth hire</a>
-                <a class="dropdown-item" href="#Dessert Cart Hire">Dessert Cart Hire</a>
-                <a class="dropdown-item" href="#Backlight Number & Letters">Backlight Number & Letters</a>
-                <a class="dropdown-item" href="#Neon Signs">Neon Signs</a>
-                <a class="dropdown-item" href="#Backdrop Hire">Backdrop Hire</a>
-                <a class="dropdown-item" href="#Party Equipment Hire">Party Equipment Hire</a>
-                <a class="dropdown-item" href="#Party Hire Packages">Party Hire Packages</a>
+    <div style="position:fixed;margin-top: 8rem; margin-left: 5px">
+        <div style="all: initial">
+            <div class="header" style="width: 8rem">
+                <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+                <div class="mega-category-menu" style="padding: 0;margin: 0;height: 30px">
+                    <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
+                    <ul class="sub-category">
+                        {% for type in types %}
+                            <li><a href="#{{ type.name_en }}">{{ type.name_en }}<i
+                                    class="lni lni-chevron-right"></i></a>
+                                <ul class="inner-sub-category">
+                                    {% for sub_type in sub_types %}
+                                        {% if sub_type.main_type == type %}
+                                            <li><a href="#{{ sub_type.name_en }}">{{ sub_type.name_en }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
 
             </div>
+
+        </div>
+        <style>
+            @media (min-width: 991px) {
+                #mobile-nav {
+                    display: none;
+                }
+            }
+        </style>
+        <div style="all: initial">
+            <div class="header">
+
+                <nav id="mobile-nav" class="navbar navbar-expand-lg">
+                    <button style="max-width: 8rem" class="navbar-toggler mobile-menu-btn" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                        <ul id="nav" class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a href="index.html" class="active" aria-label="Toggle navigation">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                   data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
+                                   aria-expanded="false" aria-label="Toggle navigation">Pages</a>
+                                <ul class="sub-menu collapse" id="submenu-1-2">
+                                    <li class="nav-item"><a href="about-us.html">About Us</a></li>
+                                    <li class="nav-item"><a href="faq.html">Faq</a></li>
+                                    <li class="nav-item"><a href="login.html">Login</a></li>
+                                    <li class="nav-item"><a href="register.html">Register</a></li>
+                                    <li class="nav-item"><a href="mail-success.html">Mail Success</a></li>
+                                    <li class="nav-item"><a href="404.html">404 Error</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                   data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
+                                   aria-expanded="false" aria-label="Toggle navigation">Shop</a>
+                                <ul class="sub-menu collapse" id="submenu-1-3">
+                                    <li class="nav-item"><a href="product-grids.html">Shop Grid</a></li>
+                                    <li class="nav-item"><a href="product-list.html">Shop List</a></li>
+                                    <li class="nav-item"><a href="product-details.html">shop Single</a></li>
+                                    <li class="nav-item"><a href="cart.html">Cart</a></li>
+                                    <li class="nav-item"><a href="checkout.html">Checkout</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                   data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
+                                   aria-expanded="false" aria-label="Toggle navigation">Blog</a>
+                                <ul class="sub-menu collapse" id="submenu-1-4">
+                                    <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
+                                    </li>
+                                    <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
+                                    <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
+                                        Sibebar</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contact.html" aria-label="Toggle navigation">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div> <!-- navbar collapse -->
+                </nav>
+            </div>
+
         </div>
 
-    </nav>
+    </div>
+
 
 
 

@@ -50,7 +50,7 @@ class flower_admin(SortableAdminMixin, admin.ModelAdmin):
         models.ImageField: {'widget': AdminImageWidget}
     }
 
-    change_form_template = "sub_menu.html"
+    change_form_template = "flower_sub_menu.html"
 
 
 admin.site.register(flower, flower_admin)

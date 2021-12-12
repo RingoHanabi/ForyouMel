@@ -16,22 +16,33 @@ class AdminImageWidget(AdminFileWidget):
 # Register your models here.
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 
-from .models import party_hire, party_hire_type
+from .models import party_hire, party_hire_type, party_hire_sub_type
 
 
 class party_hire_type_admin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ("name_cn", "name_en", "order")
+
+admin.site.register(party_hire_type, party_hire_type_admin)
+
+class flower_sub_type_admin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name_cn", "name_en", "main_type", "order")
+
+
+admin.site.register(party_hire_sub_type, flower_sub_type_admin)
+
 
 class party_hire_admin(SortableAdminMixin, admin.ModelAdmin):
 
     ordering = ["order","type"]
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
     admin_thumbnail.template =  'admin_thumbnail.html'
-    list_display = ("name_cn", "name_en", "type","admin_thumbnail","order")
+    list_display = ("name_cn", "name_en", "main_type","type","admin_thumbnail","order")
 
     formfield_overrides = {
         models.ImageField: {'widget': AdminImageWidget}
     }
 
+    change_form_template = "party_hire_sub_menu.html"
+
+
 admin.site.register(party_hire, party_hire_admin)
-admin.site.register(party_hire_type, party_hire_type_admin)
