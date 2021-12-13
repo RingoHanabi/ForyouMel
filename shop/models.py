@@ -6,7 +6,6 @@ from django.db import models
 from django.utils.safestring import mark_safe
 
 
-
 class Type(models.Model):
     name_en = models.CharField(max_length=50, unique=True)
     name_cn = models.CharField(max_length=50, unique=True)
@@ -18,6 +17,7 @@ class Type(models.Model):
 class Product(models.Model):
     name_en = models.CharField(max_length=50, null=True)
     name_cn = models.CharField(max_length=50, null=True)
+    price_from = models.BooleanField(default=False)
     price = models.FloatField(null=True)
     description_en = models.TextField(null=True, blank=True)
     description_cn = models.TextField(null=True, blank=True)
