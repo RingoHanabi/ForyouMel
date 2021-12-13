@@ -67,11 +67,11 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title" style="font-size: 35px">{{ flower.name_cn }}</h2>
+                            <h2 class="title" style="font-size: 30px">{{ flower.name_cn }}</h2>
                             <p hidden class="category">{{ flower.main_type.name_cn }}: <a
                                     href="{% url "flower cn" %}#{{ flower.type.name_en }}">{{ flower.type.name_cn }}</a>
                             </p>
-                            <h3 class="price">$ {{ flower.price|floatformat:2 }}</h3>
+                            <h3 class="price" style="margin-top: 3px">$ {{ flower.price|floatformat:2 }}</h3>
                             <p class="info-text">{{ flower.description_cn }}</p>
 
                             <div class="bottom-content">
