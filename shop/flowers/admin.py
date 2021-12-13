@@ -24,15 +24,13 @@ class AdminImageWidget(AdminFileWidget):
 
 
 class flower_type_admin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ("name_cn", "name_en", "order")
-
+    list_display = ("name_cn","order" ,"name_en")
 
 admin.site.register(flower_type, flower_type_admin)
 
 
 class flower_sub_type_admin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ("name_cn", "name_en", "main_type", "order")
-
+    list_display = ("name_cn", "order", "name_en", "main_type")
 
 admin.site.register(flower_sub_type, flower_sub_type_admin)
 
@@ -44,7 +42,7 @@ class flower_admin(SortableAdminMixin, admin.ModelAdmin):
     ordering = ["order", "type"]
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
     admin_thumbnail.template = 'admin_thumbnail.html'
-    list_display = ("order","name_cn", "name_en", "main_type","type", "admin_thumbnail")
+    list_display = ("name_cn", "order", "name_en", "main_type","type", "admin_thumbnail")
 
     formfield_overrides = {
         models.ImageField: {'widget': AdminImageWidget}
