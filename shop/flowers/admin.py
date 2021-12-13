@@ -44,7 +44,7 @@ class flower_admin(SortableAdminMixin, admin.ModelAdmin):
     ordering = ["order", "type"]
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
     admin_thumbnail.template = 'admin_thumbnail.html'
-    list_display = ("name_cn", "name_en", "main_type","type", "admin_thumbnail", "order")
+    list_display = ("order","name_cn", "name_en", "main_type","type", "admin_thumbnail")
 
     formfield_overrides = {
         models.ImageField: {'widget': AdminImageWidget}
