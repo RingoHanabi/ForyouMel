@@ -76,30 +76,28 @@
                 <div class="col-lg-6 col-sm-6 mb-6">
                     <!-- Portfolio item 1-->
                     <div class="portfolio-item">
-                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                        <a class="portfolio-link" href="{% url "flower cn" %}#Rose">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
                             <img class="img-fluid" src="{% static "img/homepage/bouquet6.png" %}" alt="">
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Bouquet 1</div>
-                            <div class="portfolio-caption-subheading text-muted">$xxx</div>
+                            <div class="portfolio-caption-heading"><p style="font-size: 22px">玫瑰花束</p></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-6 mb-6">
                     <!-- Portfolio item 2-->
                     <div class="portfolio-item">
-                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="{% url "flower cn" %}#Mixed">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"></div>
                             </div>
                             <img class="img-fluid" src="{% static "img/homepage/bouquet7.png" %}" alt="">
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Bouquet 2</div>
-                            <div class="portfolio-caption-subheading text-muted">$xxx</div>
+                            <div class="portfolio-caption-heading"><p style="font-size: 22px">混合花束</p></div>
                         </div>
                     </div>
                 </div>
@@ -154,21 +152,6 @@
             </div>
             <div class="row" style="margin-bottom: 60px">
                 <div class="col-lg-6 col-sm-6 mb-6">
-                    <!-- Portfolio item 1-->
-                    <div class="portfolio-item">
-                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content"></div>
-                            </div>
-                            <img class="img-fluid" src="{% static "img/homepage/decoration5.jpg" %}" alt="">
-                        </a>
-                        <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Decoration 1</div>
-                            <div class="portfolio-caption-subheading text-muted">$xxx</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-6 mb-6">
                     <!-- Portfolio item 2-->
                     <div class="portfolio-item">
                         <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
@@ -183,24 +166,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-sm-6 mb-6">
-                    <!-- Portfolio item 1-->
-                    <div class="portfolio-item">
-                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content"></div>
-                            </div>
-                            <img class="img-fluid" src="{% static "img/homepage/decoration10.jpg" %}" alt="">
-                        </a>
-                        <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Decoration 1</div>
-                            <div class="portfolio-caption-subheading text-muted">$xxx</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-6 mb-6">
+                                <div class="col-lg-6 col-sm-6 mb-6">
                     <!-- Portfolio item 2-->
                     <div class="portfolio-item">
                         <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
@@ -215,7 +181,51 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
+        </div>
+    </section>
+    <section class="page-section bg-white" id="portfolio">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">婚礼布置</h2>
+                <h3 class="section-subheading text-muted"></h3>
+            </div>
+            <div class="row" style="margin-bottom: 60px">
+                <div class="col-lg-6 col-sm-6 mb-6">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"></div>
+                            </div>
+                            <img class="img-fluid" src="{% static "img/homepage/decoration5.jpg" %}" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">Decoration 1</div>
+                            <div class="portfolio-caption-subheading text-muted">$xxx</div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col-lg-6 col-sm-6 mb-6">
+                    <!-- Portfolio item 1-->
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"></div>
+                            </div>
+                            <img class="img-fluid" src="{% static "img/homepage/decoration10.jpg" %}" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-caption-heading">Decoration 1</div>
+                            <div class="portfolio-caption-subheading text-muted">$xxx</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
     <script>
