@@ -22,7 +22,7 @@ class flower_sub_type(Type):
 
 class flower(Product):
     main_type = models.ForeignKey(flower_type, on_delete=models.CASCADE, null=True)
-    type = models.ForeignKey(flower_sub_type, on_delete=models.DO_NOTHING)
+    type = models.ForeignKey(flower_sub_type, on_delete=models.CASCADE)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
     class Meta(object):
         ordering = ['order']
