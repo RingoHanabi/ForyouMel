@@ -26,11 +26,13 @@ class AdminImageWidget(AdminFileWidget):
 class flower_type_admin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ("name_cn","order" ,"name_en")
 
+
 admin.site.register(flower_type, flower_type_admin)
 
 
 class flower_sub_type_admin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ("name_cn", "order", "name_en", "main_type")
+
 
 admin.site.register(flower_sub_type, flower_sub_type_admin)
 
@@ -48,7 +50,7 @@ class flower_admin(SortableAdminMixin, admin.ModelAdmin):
         models.ImageField: {'widget': AdminImageWidget}
     }
 
-    change_form_template = "flower_sub_menu.html"
+    change_form_template = "flower_sub_menu2.html"
 
 
 admin.site.register(flower, flower_admin)
