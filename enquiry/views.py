@@ -4,7 +4,6 @@ from django.contrib import messages
 # Create your views here.
 def enquiry_cn(request):
     if request.method == 'POST' and 'name' in request.POST:
-        print(request.POST)
         form = EnquiryForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -13,14 +12,11 @@ def enquiry_cn(request):
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
 
-            print(name+email+phone+subject+body)
             form.save()
         messages.add_message(request, messages.SUCCESS, "表单已成功上传，我们会尽快与您联系")
     elif request.method == 'POST' and request.POST["language"] == "English":
-        print("English")
         return redirect("enquiry")
     elif request.method == 'POST' and request.POST["language"] == "Chinese":
-        print("Chinese")
 
         return redirect("enquiry_cn")
 
@@ -29,7 +25,6 @@ def enquiry_cn(request):
 
 def enquiry(request):
     if request.method == 'POST' and 'name' in request.POST:
-        print(request.POST)
         form = EnquiryForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
@@ -38,14 +33,11 @@ def enquiry(request):
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
 
-            print(name+email+phone+subject+body)
             form.save()
         messages.add_message(request, messages.SUCCESS, "The enquiry form is successfully submitted, we will get back to you so as we can")
     elif request.method == 'POST' and request.POST["language"] == "English":
-        print("English")
         return redirect("enquiry")
     elif request.method == 'POST' and request.POST["language"] == "Chinese":
-        print("Chinese")
 
         return redirect("enquiry_cn")
 

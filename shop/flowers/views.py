@@ -67,7 +67,6 @@ def flower_details_en(request, id):
         return redirect("flower details", id=id)
     if request.method == 'POST' and request.POST["language"] == "Chinese":
         return redirect("flower details cn", id=id)
-    print(id)
     flower_detail = flower.objects.all().filter(id=id).first()
     return render(request, 'flowers_details.html',
                   {'page_title': "Our Flowers: " + flower_detail.name_en, "flower": flower_detail})
@@ -91,7 +90,6 @@ def post_flower_maintypes(request):
         for each in main_types:
             return_data.append([each.id, each.name_cn])
         return_data = json.dumps(return_data)
-        print(return_data)
         return JsonResponse(return_data, status=200, safe=False)
 
 

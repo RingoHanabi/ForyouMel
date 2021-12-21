@@ -32,7 +32,6 @@ def balloon_details_en(request, id):
         return redirect("balloon details", id = id)
     if request.method == 'POST' and request.POST["language"] == "Chinese":
         return redirect("balloon details cn", id = id)
-    print(id)
     balloon_detail = balloon.objects.all().filter(id = id).first()
     return render(request, 'balloon_details.html',{'page_title':"Balloon: "+balloon_detail.name_en,"balloon":balloon_detail})
 
@@ -52,7 +51,6 @@ def post_balloon_maintypes(request):
         for each in main_types:
             return_data.append([each.id,each.name_cn])
         return_data = json.dumps(return_data)
-        print(return_data)
         return JsonResponse(return_data, status=200,safe=False)
 
 
