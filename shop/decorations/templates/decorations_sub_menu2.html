@@ -1,0 +1,79 @@
+{% extends 'admin/change_form.html' %}
+
+
+{% block field_sets %}
+    {% for fieldset in adminform %}
+        {% include "admin/includes/fieldset.html" %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <script>
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            var csrftoken = getCookie('csrftoken');
+
+
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+            document.getElementsByName("type")[0].innerHTML = null;
+            sub_type = document.getElementsByClassName("field-type")[0]
+            sub_type.style.visibility = "hidden"
+
+            main_type_select = document.getElementsByName("main_type")[0]
+            main_type_select.onchange = function () {
+                if (main_type_select.value.length != 0) {
+                    console.log(main_type_select.value)
+                    $.ajax({
+                        type: 'POST',
+                        url: "{% url 'flower sub type post' %}",
+                        data: {"main_type_id": main_type_select.value},
+                        success: function (response) {
+                            console.log(response)
+
+                            var sub_type = document.getElementsByClassName("field-type")[0]
+                            sub_type.style.visibility = 'visible'
+
+                            var sub_type_selector = document.getElementsByName("type")[0]
+                            document.getElementsByName("type")[0].innerHTML = null;
+
+                            JSON.parse(response).forEach(function (element) {
+                                let opt = document.createElement('option');
+                                opt.value = element[0];
+                                opt.innerHTML = element[1]
+
+                                sub_type_selector.appendChild(opt)
+                            })
+                        }
+
+
+                    })
+                }
+            }
+        </script>
+    {% endfor %}
+{% endblock %}

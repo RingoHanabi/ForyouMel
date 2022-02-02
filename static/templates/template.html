@@ -10,6 +10,8 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}"/>
     <!-- Font Awesome icons (free version)-->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
@@ -75,12 +77,13 @@
                     <li class="nav-item"><a class="nav-link" href="/shop/balloon">Balloon</a></li>
                     <li class="nav-item"><a class="nav-link" href="/shop/party">Party Hire</a></li>
                     <li class="nav-item"><a class="nav-link" href="/shop/wedding">Wedding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shop/decoration">Decoration</a></li>
+
                     <li class="nav-item"><a class="nav-link" href="/enquiry">Contact Us</a></li>
 
                     <li class="nav-item" value="English">
                         <form method="post">
                             {% csrf_token %}
-                            <button type="submit" name="language" value="English">EN</button>
                             <button type="submit" name="language" value="Chinese">中文</button>
 
                         </form>

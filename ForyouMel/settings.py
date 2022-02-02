@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'shop.balloon',
     'shop.wedding',
     'shop.party_hire',
+    'shop.decorations',
     'shopping_cart',
     'django.contrib.admin',
     'django.contrib.auth',

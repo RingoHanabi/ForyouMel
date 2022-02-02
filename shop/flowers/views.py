@@ -32,7 +32,7 @@ def flower_cn(request):
                    "flowers": all_flowers})
 
 
-def flower_type_en(request, type_id):
+def flower_type_en(request,type_id):
     if request.method == 'POST' and request.POST["language"] == "English":
         return redirect("flower type", type_id)
     if request.method == 'POST' and request.POST["language"] == "Chinese":
@@ -40,8 +40,9 @@ def flower_type_en(request, type_id):
 
     all_flowers = flower.objects.all()
     all_flower_types = flower_type.objects.all()
-    this_type = all_flower_types.filter(id=type_id).first()
     all_flower_sub_types = flower_sub_type.objects.all()
+    this_type = all_flower_sub_types.filter(id=type_id).first()
+
     return render(request, 'flowers_type.html',
                   {'page_title': "Our Flowers", "types": all_flower_types, "sub_types": all_flower_sub_types,
                    "flowers": all_flowers, "this_type": this_type})
@@ -55,8 +56,9 @@ def flower_type_cn(request, type_id):
 
     all_flowers = flower.objects.all()
     all_flower_types = flower_type.objects.all()
-    this_type = all_flower_types.filter(id=type_id).first()
     all_flower_sub_types = flower_sub_type.objects.all()
+    this_type = all_flower_sub_types.filter(id=type_id).first()
+
     return render(request, 'flowers_type_cn.html',
                   {'page_title': "Our Flowers", "types": all_flower_types, "sub_types": all_flower_sub_types,
                    "flowers": all_flowers, "this_type": this_type})
@@ -68,8 +70,13 @@ def flower_details_en(request, id):
     if request.method == 'POST' and request.POST["language"] == "Chinese":
         return redirect("flower details cn", id=id)
     flower_detail = flower.objects.all().filter(id=id).first()
+    all_flowers = flower.objects.all()
+    all_flower_types = flower_type.objects.all()
+    all_flower_sub_types = flower_sub_type.objects.all()
+
     return render(request, 'flowers_details.html',
-                  {'page_title': "Our Flowers: " + flower_detail.name_en, "flower": flower_detail})
+                  {'page_title': "Our Flowers: " + flower_detail.name_en, "flower": flower_detail, "types": all_flower_types, "sub_types": all_flower_sub_types,
+                   "flowers": all_flowers})
 
 
 def flower_details_cn(request, id):

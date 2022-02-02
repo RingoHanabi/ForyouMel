@@ -1,0 +1,172 @@
+{% extends "template.html" %}
+{% load static %}
+{% block content %}
+
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/LineIcons.3.0.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/glightbox.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <title>
+        ForYouMel - Florist Design & Rental shop
+    </title>
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/gallery/flower header.jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading"></div>
+            <div class="masthead-heading text-uppercase"></div>
+        </div>
+    </header>
+
+    <!-- Start Item Details -->
+
+    <section class="item-details section">
+
+        <div class="container">
+            <div class="top-area">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="product-images">
+                            <main id="gallery">
+                                <div class="main-img">
+                                    <img src="/{{ flower.thumbnail }}" id="current" alt="#">
+                                </div>
+                                <div class="images">
+                                    <img src="/{{ flower.thumbnail }}" class="img" alt="#">
+                                    {% if flower.supplyment_image1 != "image" %}
+                                        <img src="/{{ flower.supplyment_image1 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image2 != "image" %}
+                                        <img src="/{{ flower.supplyment_image2 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image3 != "image" %}
+                                        <img src="/{{ flower.supplyment_image3 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image4 != "image" %}
+                                        <img src="/{{ flower.supplyment_image4 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image5 != "image" %}
+                                        <img src="/{{ flower.supplyment_image5 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image6 != "image" %}
+                                        <img src="/{{ flower.supplyment_image6 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image7 != "image" %}
+                                        <img src="/{{ flower.supplyment_image7 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image8 != "image" %}
+                                        <img src="/{{ flower.supplyment_image8 }}" class="img" alt="#">
+                                    {% endif %}
+                                    {% if flower.supplyment_image9 != "image" %}
+                                        <img src="/{{ flower.supplyment_image9 }}" class="img" alt="#">
+                                    {% endif %}
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="product-info">
+                            <h2 class="title">{{ flower.name_en }}</h2>
+                            <p hidden class="category">{{ flower.main_type.name_en }}: <a
+                                    href="{% url "flower" %}#{{ flower.type.name_en }}">{{ flower.type.name_en }}</a>
+                            </p>
+                            <h3 class="price">{% if flower.price_from %}From{% endif %} ${{ flower.price|floatformat:2 }}</h3>
+                            <p class="info-text">{{ flower.description_en }}</p>
+
+                            <div class="bottom-content">
+                                <div class="row align-items-end">
+                                    <div class="col-lg-4 col-md-4 col-12">
+                                        <div class="button cart-button">
+
+                                            <button onclick="addItem();this.innerHTML = 'Cart Added!';this.classList.add('btn-success');this.classList.remove('btn-primary')"
+                                                    class="btn btn-primary update-cart" style="width: 100%;">Add to Cart
+                                            </button>
+                                            <script>
+                                                var cart = JSON.parse(getCookie('cart'))
+
+                                                console.log(cart)
+
+                                                function addItem(productID) {
+                                                    console.log(cart)
+                                                    if (cart["{{ flower.pk }}"] == undefined) {
+                                                        cart["{{ flower.pk }}"] = {'quantity': 1}
+                                                    } else {
+                                                        cart["{{ flower.pk }}"]['quantity'] += 1
+                                                    }
+                                                    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+                                                }
+
+                                                function getCookie(name) {
+                                                    var cookieArr = document.cookie.split(";")
+
+                                                    for (var i = 0; i < cookieArr.length; i++) {
+                                                        var cookiePair = cookieArr[i].split("=")
+
+                                                        if (name == cookiePair[0].trim()) {
+                                                            return decodeURIComponent(cookiePair[1])
+                                                        }
+                                                    }
+                                                    return null
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-details-info">
+                <div class="single-block">
+                    <div class="col-lg-12 col-12">
+                        <div class="info-body custom-responsive-margin">
+                            <h4>Details</h4>
+                            <p>{{ flower.details_en|safe }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- End Item Details -->
+
+
+    <script src="{% static "js/jquery.scoped.js" %}"></script>
+
+    <script src="{% static "js/glightbox.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+    <script src="{% static "js/tiny-slider.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+
+    <script>
+        onload($.scoped())
+    </script>
+    <script type="text/javascript">
+        const current = document.getElementById("current");
+        const opacity = 0.6;
+        const imgs = document.querySelectorAll(".img");
+        imgs.forEach(img => {
+            img.addEventListener("click", (e) => {
+                //reset opacity
+                imgs.forEach(img => {
+                    img.style.opacity = 1;
+                });
+                current.src = e.target.src;
+                //adding class
+                //current.classList.add("fade-in");
+                //opacity
+                e.target.style.opacity = opacity;
+            });
+        });
+    </script>
+{% endblock %}
