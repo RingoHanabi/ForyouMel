@@ -29,7 +29,7 @@
                     <div class="row">
                         {% for flower in flowers %}
                             {% if flower.type_id == this_type.id %}
-                                <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
+                                <div class="col-lg-3 col-md-6 mb-3" style="padding-left: 10px;padding-right: 10px">
                                     <!-- Portfolio item 1-->
                                     <div class="portfolio-item">
                                         <a class="portfolio-link" href="{% url "flower details" flower.id %}">
