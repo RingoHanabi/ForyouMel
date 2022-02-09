@@ -43,7 +43,7 @@ class balloon_admin(SortableAdminMixin, admin.ModelAdmin):
         models.ImageField: {'widget': AdminImageWidget}
     }
 
-    change_form_template = "balloon_sub_menu.html"
+    change_form_template = "party_hire_sub_menu.html"
 
 
 

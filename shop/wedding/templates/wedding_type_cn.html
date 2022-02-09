@@ -1,0 +1,121 @@
+{% extends "template_cn.html" %}
+{% load static %}
+{% block content %}
+
+
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/gallery/wedding header (2).jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading"></div>
+            <div class="masthead-heading text-uppercase"></div>
+        </div>
+    </header>
+    <!-- Portfolio Grid-->
+
+
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+
+
+
+            <div>
+                <div class="text-center" id="{{ this_type.name_en }}">
+                    <h2 class="section-heading text-uppercase" style="font-size: 50px">{{ this_type.name_cn }}</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+
+                    <div class="row">
+                        {% for wedding in weddings %}
+                            {% if wedding.type_id == this_type.id %}
+                                <div class="col-lg-3 col-md-6 mb-3" style="padding-left: 10px;padding-right: 10px">
+                                    <!-- Portfolio item 1-->
+                                    <div class="portfolio-item">
+                                        <a class="portfolio-link" href="{% url "wedding details cn" wedding.id %}">
+                                            <div class="portfolio-hover">
+                                                <div class="portfolio-hover-content"></div>
+                                            </div>
+                                            <img class="img-fluid"
+                                                 src="/{{ wedding.thumbnail }}"
+                                                 alt="">
+                                        </a>
+                                        <div class="portfolio-caption">
+                                            <div class="portfolio-caption-heading">{{ wedding.name_cn }}</div>
+                                            <div class="portfolio-caption-subheading text-muted">
+                                                ${{ wedding.price|floatformat:2 }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+
+        </div>
+    </section>
+
+    <div style="position:fixed;margin-top: 8rem; margin-left: 5px">
+        <div style="all: initial">
+            <div class="header" style="width: 9rem">
+                <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+                <div class="mega-category-menu" style="padding: 0;margin: 0;height: 30px;margin-left: 5px">
+                    <span class="cat-button"><i class="lni lni-menu"></i>所有婚礼布景种类</span>
+                    <ul class="sub-category">
+                        {% for type in types %}
+                            <li><a href="{% url "wedding type" type.id %}">{{ type.name_cn }}</a>
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <style>
+            @media (min-width: 991px) {
+                #mobile-nav {
+                    display: none;
+                }
+            }
+        </style>
+        <div style="all: initial">
+            <div class="header">
+
+                <nav id="mobile-nav" class="navbar navbar-expand-lg">
+                    <button style="max-width: 8rem" class="navbar-toggler mobile-menu-btn" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                        <ul id="nav" class="navbar-nav ms-auto">
+
+                            {% for type in types %}
+                                <li class="nav-item">
+                                    <a class="dd-menu collapsed"
+                                       href="{% url "wedding type" type.id %}">{{ type.name_cn }}</a>
+
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div> <!-- navbar collapse -->
+                </nav>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+{% endblock %}

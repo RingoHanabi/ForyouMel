@@ -50,7 +50,7 @@
                     console.log(main_type_select.value)
                     $.ajax({
                         type: 'POST',
-                        url: "{% url 'flower sub type post' %}",
+                        url: "{% url 'decoration sub type post' %}",
                         data: {"main_type_id": main_type_select.value},
                         success: function (response) {
                             console.log(response)

@@ -40,8 +40,10 @@ def decoration_type_en(request, type_id):
 
     all_decorations = decoration.objects.all()
     all_decoration_types = decoration_type.objects.all()
-    this_type = all_decoration_types.filter(id=type_id).first()
+
     all_decoration_sub_types = decoration_sub_type.objects.all()
+    this_type = all_decoration_sub_types.filter(id=type_id).first()
+
     return render(request, 'decorations_type.html',
                   {'page_title': "Our decorations", "types": all_decoration_types, "sub_types": all_decoration_sub_types,
                    "decorations": all_decorations, "this_type": this_type})
@@ -55,9 +57,12 @@ def decoration_type_cn(request, type_id):
 
     all_decorations = decoration.objects.all()
     all_decoration_types = decoration_type.objects.all()
-    this_type = all_decoration_types.filter(id=type_id)
 
     all_decoration_sub_types = decoration_sub_type.objects.all()
+    this_type = all_decoration_sub_types.filter(id=type_id).first()
+
+
+
     return render(request, 'decorations_type_cn.html',
                   {'page_title': "Our decorations", "types": all_decoration_types, "sub_types": all_decoration_sub_types,
                    "decorations": all_decorations, "this_type": this_type})

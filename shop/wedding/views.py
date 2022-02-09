@@ -55,3 +55,33 @@ def wedding_details_cn(request,id):
     wedding_detail = wedding.objects.all().filter(id = id).first()
 
     return render(request, 'wedding_details_cn.html',{'page_title':"婚礼现场: "+wedding_detail.name_cn,"wedding":wedding_detail})
+
+
+def wedding_type_en(request,type_id):
+    if request.method == 'POST' and request.POST["language"] == "English":
+        return redirect("wedding type", type_id)
+    if request.method == 'POST' and request.POST["language"] == "Chinese":
+        return redirect("wedding type cn", type_id)
+
+    all_weddings = wedding.objects.all()
+    all_wedding_types = wedding_type.objects.all()
+    this_type = all_wedding_types.filter(id=type_id).first()
+
+    return render(request, 'wedding_type.html',
+                  {'page_title': "Our weddings", "types": all_wedding_types,
+                   "weddings": all_weddings, "this_type": this_type})
+
+
+def wedding_type_cn(request, type_id):
+    if request.method == 'POST' and request.POST["language"] == "English":
+        return redirect("wedding type", type_id)
+    if request.method == 'POST' and request.POST["language"] == "Chinese":
+        return redirect("wedding type cn", type_id)
+
+    all_weddings = wedding.objects.all()
+    all_wedding_types = wedding_type.objects.all()
+    this_type = all_wedding_types.filter(id=type_id).first()
+
+    return render(request, 'wedding_type_cn.html',
+                  {'page_title': "Our weddings", "types": all_wedding_types,
+                   "weddings": all_weddings, "this_type": this_type})

@@ -16,10 +16,7 @@
 
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
-            <div class="text-center">
-                <h1 class="section-heading text-uppercase" style="font-size: 60px">{{ this_type.name_en }}</h1>
-                <h3 class="section-subheading text-muted"></h3>
-            </div>
+
 
 
             <div>
@@ -28,33 +25,25 @@
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
-            {% for sub_type in sub_types %}
-                {% if sub_type.main_type == this_type %}
-                    <div>
-                        <div class="text-center" id="{{ sub_type.name_en }}">
-                            <h3 class="section-heading text-uppercase"
-                                style="font-size: 35px">{{ sub_type.name_en }}</h3>
-                            <h3 class="section-subheading text-muted"></h3>
-                        </div>
-                    </div>
+
                     <div class="row">
-                        {% for flower in flowers %}
-                            {% if flower.type.name_en == sub_type.name_en %}
-                                <div class="col-lg-3 col-sm-3 mb-3" style="padding-left: 10px;padding-right: 10px">
+                        {% for decoration in decorations %}
+                            {% if decoration.type_id == this_type.id %}
+                                <div class="col-lg-3 col-md-6 mb-3" style="padding-left: 10px;padding-right: 10px">
                                     <!-- Portfolio item 1-->
                                     <div class="portfolio-item">
-                                        <a class="portfolio-link" href="details/{{ flower.id }}">
+                                        <a class="portfolio-link" href="{% url "decoration details" decoration.id %}">
                                             <div class="portfolio-hover">
                                                 <div class="portfolio-hover-content"></div>
                                             </div>
                                             <img class="img-fluid"
-                                                 src="/{{ flower.thumbnail }}"
+                                                 src="/{{ decoration.thumbnail }}"
                                                  alt="">
                                         </a>
                                         <div class="portfolio-caption">
-                                            <div class="portfolio-caption-heading">{{ flower.name_en }}</div>
+                                            <div class="portfolio-caption-heading">{{ decoration.name_en }}</div>
                                             <div class="portfolio-caption-subheading text-muted">
-                                                ${{ flower.price|floatformat:2 }}</div>
+                                                ${{ decoration.price|floatformat:2 }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -62,8 +51,6 @@
                         {% endfor %}
 
                     </div>
-                {% endif %}
-            {% endfor %}
 
 
         </div>
@@ -77,13 +64,13 @@
                     <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
                     <ul class="sub-category">
                         {% for type in types %}
-                            <li><a href="{% url "flower type" type.id %}">{{ type.name_en }}<i
+                            <li><a >{{ type.name_en }}<i
                                     class="lni lni-chevron-right"></i></a>
                                 <ul class="inner-sub-category">
                                     {% for sub_type in sub_types %}
                                         {% if sub_type.main_type == type %}
                                             <li>
-                                                <a href="{% url "flower type" type.id %}#{{ sub_type.name_en }}">{{ sub_type.name_en }}</a>
+                                                <a href="{% url "decoration type" sub_type.id %}">{{ sub_type.name_en }}</a>
                                             </li>
                                         {% endif %}
                                     {% endfor %}
@@ -128,7 +115,7 @@
                                         {% for sub_type in sub_types %}
                                             {% if sub_type.main_type == type %}
                                                 <li>
-                                                    <a href="{% url "flower type" type.id %}#{{ sub_type.name_en }}">{{ sub_type.name_en }}</a>
+                                                    <a href="{% url "decoration type" sub_type.id %}">{{ sub_type.name_en }}</a>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}

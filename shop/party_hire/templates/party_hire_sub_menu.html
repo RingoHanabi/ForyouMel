@@ -1,71 +1,13 @@
 {% extends 'admin/change_form.html' %}
 
+
 {% block field_sets %}
     {% for fieldset in adminform %}
+        {% include "admin/includes/fieldset.html" %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-        <fieldset class="module aligned {{ fieldset.classes }}">
-            {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
-            {% if fieldset.description %}
-                <div class="description">{{ fieldset.description|safe }}</div>
-            {% endif %}
-            {% for line in fieldset %}
-                {% for field in line %}{% if field.field.name != "type" %}
-                    {% if field.field.name != "main_type" %}
-
-                        <div class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
-                            {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
-                            {% for field in line %}
-                                <div{% if not line.fields|length_is:'1' %}
-                                    class="fieldBox{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %}
-                                    class="checkbox-row"{% endif %}>
-                                    {% if not line.fields|length_is:'1' and not field.is_readonly %}
-                                        {{ field.errors }}{% endif %}
-                                    {% if field.is_checkbox %}
-                                        {{ field.field }}{{ field.label_tag }}
-                                    {% else %}
-                                        {{ field.label_tag }}
-                                        {% if field.is_readonly %}
-                                            <div class="readonly">{{ field.contents }}</div>
-                                        {% else %}
-                                            {{ field.field }}
-                                        {% endif %}
-                                    {% endif %}
-                                    {% if field.field.help_text %}
-                                        <div class="help">{{ field.field.help_text|safe }}</div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}{% endif %}{% endfor %}
-            {% endfor %}
-
-            <div class="form-row field-main_type">
-                <div>
-                    <label class="required" for="id_main_type">Main type:</label>
-                    <div class="related-widget-wrapper">
-                        <select name="main_type" required="" id="id_main_type">
-                            <option value="" selected="">---------</option>
-                        </select>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row field-type" style="visibility: hidden">
-                <div>
-                    <label class="required" for="id_type">Type:</label>
-                    <div class="related-widget-wrapper">
-                        <select name="type" required="" id="id_type">
-                            <option value="" selected="">---------</option>
-                        </select>
-
-                    </div>
-                </div>
-            </div>
-        </fieldset>
         <script>
             function getCookie(name) {
                 var cookieValue = null;
@@ -98,34 +40,18 @@
                     }
                 }
             });
+            document.getElementsByName("type")[0].innerHTML = null;
+            sub_type = document.getElementsByClassName("field-type")[0]
+            sub_type.style.visibility = "hidden"
 
-            $.ajax({
-                type: 'POST',
-                url: "{% url 'party_hire main type post' %}",
-                data: null,
-                success: function (response) {
-                    var main_type = document.getElementsByName("main_type")[0]
-                    JSON.parse(response).forEach(function (element) {
-                        let opt = document.createElement('option');
-                        opt.value = element[0];
-                        opt.innerHTML = element[1]
-
-                        main_type.appendChild(opt)
-                    })
-
-
-                }
-
-            })
-
-            let main_type = document.getElementsByName("main_type")[0]
-            main_type.onchange = function () {
-                console.log(main_type.value.length)
-                if (main_type.value != 0) {
+            main_type_select = document.getElementsByName("main_type")[0]
+            main_type_select.onchange = function () {
+                if (main_type_select.value.length != 0) {
+                    console.log(main_type_select.value)
                     $.ajax({
                         type: 'POST',
                         url: "{% url 'party_hire sub type post' %}",
-                        data: {"main_type_id": main_type.value},
+                        data: {"main_type_id": main_type_select.value},
                         success: function (response) {
                             console.log(response)
 
@@ -133,6 +59,8 @@
                             sub_type.style.visibility = 'visible'
 
                             var sub_type_selector = document.getElementsByName("type")[0]
+                            document.getElementsByName("type")[0].innerHTML = null;
+
                             JSON.parse(response).forEach(function (element) {
                                 let opt = document.createElement('option');
                                 opt.value = element[0];
@@ -148,5 +76,4 @@
             }
         </script>
     {% endfor %}
-
 {% endblock %}

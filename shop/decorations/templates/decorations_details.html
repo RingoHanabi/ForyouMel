@@ -13,7 +13,7 @@
     </title>
 
     <!-- Masthead-->
-    <header class="masthead" style="background-image: url('{% static "img/gallery/flower header.jpg" %}')">
+    <header class="masthead" style="background-image: url('{% static "img/decoration/header 3.jpg" %}')">
         <div class="container" style="height: 300px">
             <div class="masthead-subheading"></div>
             <div class="masthead-heading text-uppercase"></div>
@@ -31,36 +31,36 @@
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
-                                    <img src="/{{ flower.thumbnail }}" id="current" alt="#">
+                                    <img src="/{{ decoration.thumbnail }}" id="current" alt="#">
                                 </div>
                                 <div class="images">
-                                    <img src="/{{ flower.thumbnail }}" class="img" alt="#">
-                                    {% if flower.supplyment_image1 != "image" %}
-                                        <img src="/{{ flower.supplyment_image1 }}" class="img" alt="#">
+                                    <img src="/{{ decoration.thumbnail }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image1 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image1 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image2 != "image" %}
-                                        <img src="/{{ flower.supplyment_image2 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image2 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image2 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image3 != "image" %}
-                                        <img src="/{{ flower.supplyment_image3 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image3 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image3 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image4 != "image" %}
-                                        <img src="/{{ flower.supplyment_image4 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image4 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image4 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image5 != "image" %}
-                                        <img src="/{{ flower.supplyment_image5 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image5 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image5 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image6 != "image" %}
-                                        <img src="/{{ flower.supplyment_image6 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image6 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image6 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image7 != "image" %}
-                                        <img src="/{{ flower.supplyment_image7 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image7 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image7 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image8 != "image" %}
-                                        <img src="/{{ flower.supplyment_image8 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image8 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image8 }}" class="img" alt="#">
                                     {% endif %}
-                                    {% if flower.supplyment_image9 != "image" %}
-                                        <img src="/{{ flower.supplyment_image9 }}" class="img" alt="#">
+                                    {% if decoration.supplyment_image9 != "image" %}
+                                        <img src="/{{ decoration.supplyment_image9 }}" class="img" alt="#">
                                     {% endif %}
                                 </div>
                             </main>
@@ -68,12 +68,12 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">{{ flower.name_en }}</h2>
-                            <p hidden class="category">{{ flower.main_type.name_en }}: <a
-                                    href="{% url "flower" %}#{{ flower.type.name_en }}">{{ flower.type.name_en }}</a>
+                            <h2 class="title">{{ decoration.name_en }}</h2>
+                            <p hidden class="category">{{ decoration.main_type.name_en }}: <a
+                                    href="{% url "decoration" %}#{{ decoration.type.name_en }}">{{ decoration.type.name_en }}</a>
                             </p>
-                            <h3 class="price">{% if flower.price_from %}From{% endif %} ${{ flower.price|floatformat:2 }}</h3>
-                            <p class="info-text">{{ flower.description_en }}</p>
+                            <h3 class="price">{% if decoration.price_from %}From{% endif %} ${{ decoration.price|floatformat:2 }}</h3>
+                            <p class="info-text">{{ decoration.description_en }}</p>
 
                             <div class="bottom-content">
                                 <div class="row align-items-end">
@@ -90,10 +90,10 @@
 
                                                 function addItem(productID) {
                                                     console.log(cart)
-                                                    if (cart["{{ flower.pk }}"] == undefined) {
-                                                        cart["{{ flower.pk }}"] = {'quantity': 1}
+                                                    if (cart["{{ decoration.pk }}"] == undefined) {
+                                                        cart["{{ decoration.pk }}"] = {'quantity': 1}
                                                     } else {
-                                                        cart["{{ flower.pk }}"]['quantity'] += 1
+                                                        cart["{{ decoration.pk }}"]['quantity'] += 1
                                                     }
                                                     document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
                                                 }
@@ -127,7 +127,7 @@
                     <div class="col-lg-12 col-12">
                         <div class="info-body custom-responsive-margin">
                             <h4>Details</h4>
-                            <p>{{ flower.details_en|safe }}</p>
+                            <p>{{ decoration.details_en|safe }}</p>
 
                         </div>
                     </div>

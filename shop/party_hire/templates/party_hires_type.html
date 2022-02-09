@@ -1,0 +1,140 @@
+{% extends "template.html" %}
+{% load static %}
+{% block content %}
+
+
+
+    <!-- Masthead-->
+    <header class="masthead" style="background-image: url('{% static "img/gallery/party hire (2).jpg" %}')">
+        <div class="container" style="height: 300px">
+            <div class="masthead-subheading"></div>
+            <div class="masthead-heading text-uppercase"></div>
+        </div>
+    </header>
+    <!-- Portfolio Grid-->
+
+
+    <section class="page-section bg-light" id="portfolio">
+        <div class="container">
+
+
+
+            <div>
+                <div class="text-center" id="{{ this_type.name_en }}">
+                    <h2 class="section-heading text-uppercase" style="font-size: 50px">{{ this_type.name_en }}</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+            </div>
+
+                    <div class="row">
+                        {% for party_hire in party_hires %}
+                            {% if party_hire.type_id == this_type.id %}
+                                <div class="col-lg-3 col-md-6 mb-3" style="padding-left: 10px;padding-right: 10px">
+                                    <!-- Portfolio item 1-->
+                                    <div class="portfolio-item">
+                                        <a class="portfolio-link" href="{% url "party_hire details" party_hire.id %}">
+                                            <div class="portfolio-hover">
+                                                <div class="portfolio-hover-content"></div>
+                                            </div>
+                                            <img class="img-fluid"
+                                                 src="/{{ party_hire.thumbnail }}"
+                                                 alt="">
+                                        </a>
+                                        <div class="portfolio-caption">
+                                            <div class="portfolio-caption-heading">{{ party_hire.name_en }}</div>
+                                            <div class="portfolio-caption-subheading text-muted">
+                                                ${{ party_hire.price|floatformat:2 }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+
+        </div>
+    </section>
+
+    <div style="position:fixed;margin-top: 8rem; margin-left: 5px">
+        <div style="all: initial">
+            <div class="header" style="width: 8rem">
+                <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+                <div class="mega-category-menu" style="padding: 0;margin: 0;height: 30px">
+                    <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
+                    <ul class="sub-category">
+                        {% for type in types %}
+                            <li><a >{{ type.name_en }}<i
+                                    class="lni lni-chevron-right"></i></a>
+                                <ul class="inner-sub-category">
+                                    {% for sub_type in sub_types %}
+                                        {% if sub_type.main_type == type %}
+                                            <li>
+                                                <a href="{% url "party_hire type" sub_type.id %}">{{ sub_type.name_en }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <style>
+            @media (min-width: 991px) {
+                #mobile-nav {
+                    display: none;
+                }
+            }
+        </style>
+        <div style="all: initial">
+            <div class="header">
+
+                <nav id="mobile-nav" class="navbar navbar-expand-lg">
+                    <button style="max-width: 8rem" class="navbar-toggler mobile-menu-btn" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                        <ul id="nav" class="navbar-nav ms-auto">
+
+                            {% for type in types %}
+                                <li class="nav-item">
+                                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                       data-bs-target="#submenu-{{ type.name_en }}"
+                                       aria-controls="navbarSupportedContent"
+                                       aria-expanded="false" aria-label="Toggle navigation">{{ type.name_en }}</a>
+                                    <ul class="sub-menu collapse" id="submenu-{{ type.name_en }}">
+                                        {% for sub_type in sub_types %}
+                                            {% if sub_type.main_type == type %}
+                                                <li>
+                                                    <a href="{% url "party_hire type" sub_type.id %}">{{ sub_type.name_en }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div> <!-- navbar collapse -->
+                </nav>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+{% endblock %}
