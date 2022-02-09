@@ -21,7 +21,7 @@
 
             <div>
                 <div class="text-center" id="{{ this_type.name_en }}">
-                    <h2 class="section-heading text-uppercase" style="font-size: 50px">{{ this_type.name_en }}</h2>
+                    <h2 class="section-heading text-uppercase" style="font-size: 50px">{{ this_type.name_cn }}</h2>
                     <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                                                  alt="">
                                         </a>
                                         <div class="portfolio-caption">
-                                            <div class="portfolio-caption-heading">{{ flower.name_en }}</div>
+                                            <div class="portfolio-caption-heading">{{ flower.name_cn }}</div>
                                             <div class="portfolio-caption-subheading text-muted">
                                                 ${{ flower.price|floatformat:2 }}</div>
                                         </div>
@@ -110,12 +110,12 @@
                                     <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
                                        data-bs-target="#submenu-{{ type.name_en }}"
                                        aria-controls="navbarSupportedContent"
-                                       aria-expanded="false" aria-label="Toggle navigation">{{ type.name_en }}</a>
+                                       aria-expanded="false" aria-label="Toggle navigation">{{ type.name_cn }}</a>
                                     <ul class="sub-menu collapse" id="submenu-{{ type.name_en }}">
                                         {% for sub_type in sub_types %}
                                             {% if sub_type.main_type == type %}
                                                 <li>
-                                                    <a href="{% url "flower type" sub_type.id %}">{{ sub_type.name_en }}</a>
+                                                    <a href="{% url "flower type cn" sub_type.id %}">{{ sub_type.name_cn }}</a>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}

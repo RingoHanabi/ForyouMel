@@ -175,12 +175,12 @@
                                     <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
                                        data-bs-target="#submenu-{{ type.name_en }}"
                                        aria-controls="navbarSupportedContent"
-                                       aria-expanded="false" aria-label="Toggle navigation">{{ type.name_en }}</a>
+                                       aria-expanded="false" aria-label="Toggle navigation">{{ type.name_cn }}</a>
                                     <ul class="sub-menu collapse" id="submenu-{{ type.name_en }}">
                                         {% for sub_type in sub_types %}
                                             {% if sub_type.main_type == type %}
                                                 <li>
-                                                    <a href="{% url "flower type" sub_type.id %}">{{ sub_type.name_en }}</a>
+                                                    <a href="{% url "flower type cn" sub_type.id %}">{{ sub_type.name_cn }}</a>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}
