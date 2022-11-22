@@ -24,7 +24,7 @@ class balloon_sub_type(Type):
 
 class balloon(Product):
     main_type = models.ForeignKey(balloon_type, on_delete=models.CASCADE, null=True)
-    type = models.ForeignKey(balloon_sub_type, on_delete=models.DO_NOTHING)
+    sub_type = models.ForeignKey(balloon_sub_type, on_delete=models.CASCADE, null = True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
     supplyment_image10 = models.ImageField(upload_to="static/img/flowers/", default="image")
     supplyment_image11 = models.ImageField(upload_to="static/img/flowers/", default="image")
