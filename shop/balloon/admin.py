@@ -16,7 +16,7 @@ class AdminImageWidget(AdminFileWidget):
 # Register your models here.
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 
-from .models import balloon, balloon_type
+from .models import balloon, balloon_type, balloon_sub_type
 
 
 class balloon_type_admin(SortableAdminMixin, admin.ModelAdmin):
@@ -24,12 +24,20 @@ class balloon_type_admin(SortableAdminMixin, admin.ModelAdmin):
 
 admin.site.register(balloon_type, balloon_type_admin)
 
+class balloon_sub_type_admin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name_cn", "name_en", "main_type", "order")
+
+
+admin.site.register(balloon_sub_type, balloon_sub_type_admin)
+
+
+
 class balloon_admin(SortableAdminMixin, admin.ModelAdmin):
 
-    ordering = ["order","main_type"]
+    ordering = ["order","sub_type"]
     admin_thumbnail = AdminThumbnail(image_field='thumbnail')
     admin_thumbnail.template =  'admin_thumbnail.html'
-    list_display = ("name_cn", "name_en","main_type","admin_thumbnail","order")
+    list_display = ("name_cn", "name_en","main_type", "sub_type","admin_thumbnail","order")
 
     formfield_overrides = {
         models.ImageField: {'widget': AdminImageWidget}
