@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 import json
 
 # Create your views here.
-from shop.balloon.models import balloon
+from shop.party_decoration.models import party_decoration
 from shop.flowers.models import flower
 from shop.party_hire.models import party_hire
 
@@ -32,10 +32,10 @@ def shopping_cart_en(request):
                 "en": "Flowers",
                 "cn": "花卉"
             }
-        elif (len(balloon.objects.all().filter(id=product.id)) != 0):
-            product = balloon.objects.all().filter(id=product.id).first()
+        elif (len(party_decoration.objects.all().filter(id=product.id)) != 0):
+            product = party_decoration.objects.all().filter(id=product.id).first()
             product_type = {
-                "en": "Balloon",
+                "en": "party_decoration",
                 "cn": "气球"
             }
 
@@ -77,10 +77,10 @@ def shopping_cart_cn(request):
                 "en": "Flowers",
                 "cn": "花卉"
             }
-        elif (len(balloon.objects.all().filter(id=product.id)) != 0):
-            product = balloon.objects.all().filter(id=product.id).first()
+        elif (len(party_decoration.objects.all().filter(id=product.id)) != 0):
+            product = party_decoration.objects.all().filter(id=product.id).first()
             product_type = {
-                "en": "Balloon",
+                "en": "party_decoration",
                 "cn": "气球"
             }
 
