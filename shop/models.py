@@ -33,6 +33,7 @@ class Product(models.Model):
     supplyment_image9 = models.ImageField(upload_to="static/img/flowers/", default="image")
     details_en = RichTextField(blank=True, null=True)
     details_cn = RichTextField(blank=True, null=True)
+    size_price_pair = models.TextField(null=True,default='{size_price_pair:[{size:9,price:99.99}]}',help_text='基础格式为{size_price_pair:[{size:9,price:99.99}]},如果想多添加几个规格，请把{size:"9只",price:"99.99"}整个添加并且在大括号之间加逗号,')
 
     def __str__(self):
         return self.name_cn

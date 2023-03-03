@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/LineIcons.3.0.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/glightbox.min.css' %}"/>
@@ -71,7 +71,14 @@
                             <p hidden class="category">{{ flower.main_type.name_cn }}: <a
                                     href="{% url "flower cn" %}#{{ flower.type.name_en }}">{{ flower.type.name_cn }}</a>
                             </p>
-                            <h3 class="price" style="margin-top: 3px">$ {{ flower.price|floatformat:2 }} {% if flower.price_from %}起{% endif %}</h3>
+                            <select class="form-select " aria-label="Default select example">
+                                {% for pair in price_pairs %}
+                                    <option>{{ pair }}</option>
+                                {% endfor %}
+
+                            </select>
+{#                            <h3 class="price" style="margin-top: 3px">$ {{ flower.price|floatformat:2 }}#}
+{#                                {% if flower.price_from %}起{% endif %}</h3>#}
                             <p class="info-text">{{ flower.description_cn }}</p>
 
                             <div class="bottom-content">

@@ -73,10 +73,18 @@ def flower_details_en(request, id):
     all_flowers = flower.objects.all()
     all_flower_types = flower_type.objects.all()
     all_flower_sub_types = flower_sub_type.objects.all()
+    flower_price_pair = json.loads(flower_detail.size_price_pair)["size_price_pair"]
+
+    flower_price_pair_display = []
+    for each in flower_price_pair:
+        pair = each.split(",")
+        flower_price_pair_display.append(f"{pair[0]} stems - ${pair[1]}")
+    print(flower_price_pair_display)
+
 
     return render(request, 'flowers_details.html',
                   {'page_title': "Our Flowers: " + flower_detail.name_en, "flower": flower_detail, "types": all_flower_types, "sub_types": all_flower_sub_types,
-                   "flowers": all_flowers})
+                   "flowers": all_flowers,"price_pairs":flower_price_pair_display})
 
 
 def flower_details_cn(request, id):
@@ -85,9 +93,16 @@ def flower_details_cn(request, id):
     if request.method == 'POST' and request.POST["language"] == "Chinese":
         return redirect("flower details cn", id=id)
     flower_detail = flower.objects.all().filter(id=id).first()
+    flower_price_pair = json.loads(flower_detail.size_price_pair)["size_price_pair"]
+
+    flower_price_pair_display = []
+    for each in flower_price_pair:
+        pair = each.split(",")
+        flower_price_pair_display.append(f"{pair[0]}只 - ${pair[1]}")
+    print(flower_price_pair_display)
 
     return render(request, 'flowers_details_cn.html',
-                  {'page_title': "花束:" + flower_detail.name_cn, "flower": flower_detail})
+                  {'page_title': "花束:" + flower_detail.name_cn, "flower": flower_detail,"price_pairs":flower_price_pair_display})
 
 
 def post_flower_maintypes(request):
