@@ -79,7 +79,6 @@ def flower_details_en(request, id):
     for each in flower_price_pair:
         pair = each.split(",")
         flower_price_pair_display.append(f"{pair[0]} stems - ${pair[1]}")
-    # print(flower_price_pair_display)
 
 
     return render(request, 'flowers_details.html',
@@ -99,7 +98,6 @@ def flower_details_cn(request, id):
     for each in flower_price_pair:
         pair = each.split(",")
         flower_price_pair_display.append(f"{pair[0]}只 - ${pair[1]}")
-    # print(flower_price_pair_display)
 
     return render(request, 'flowers_details_cn.html',
                   {'page_title': "花束:" + flower_detail.name_cn, "flower": flower_detail,"price_pairs":flower_price_pair_display})
