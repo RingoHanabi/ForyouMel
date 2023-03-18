@@ -79,7 +79,7 @@ def flower_details_en(request, id):
     for each in flower_price_pair:
         pair = each.split(",")
         flower_price_pair_display.append(f"{pair[0]} stems - ${pair[1]}")
-    print(flower_price_pair_display)
+    # print(flower_price_pair_display)
 
 
     return render(request, 'flowers_details.html',
