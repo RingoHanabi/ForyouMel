@@ -16,7 +16,7 @@ class Type(models.Model):
 
 class Product(models.Model):
     name_en = models.CharField(max_length=50, blank=True, null=True)
-    name_cn = models.CharField(max_length=50, blank=True, null=True)
+    name_cn = models.CharField(max_length=50, null=True)
     price_from = models.BooleanField(default=False, null=True)
     price = models.FloatField(null=True)
     description_en = models.TextField(null=True, blank=True)
@@ -33,8 +33,8 @@ class Product(models.Model):
     supplyment_image9 = models.ImageField(upload_to="static/img/flowers/", default="image")
     details_en = RichTextField(blank=True, null=True)
     details_cn = RichTextField(blank=True, null=True)
-    size_price_pair = models.TextField(null=True,default='{"size_price_pair": ["9,99.99"]}',help_text='基础格式为{"size_price_pair":["9,99.99"]},如果想多添加几个规格，请把["9,99.99"]整个添加并且在方括号之间加逗号,')
-
+    size_price_pair = models.TextField(null=True, default='{"size_price_pair": ["9,99.99"]}',
+                                       help_text='基础格式为{"size_price_pair":["9,99.99"]},如果想多添加几个规格，请把["9,99.99"]整个添加并且在方括号之间加逗号,')
 
     def __str__(self):
         return self.name_cn
